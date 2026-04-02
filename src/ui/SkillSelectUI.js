@@ -1,5 +1,4 @@
 import { SkillComponent } from '../components/SkillComponent.js';
-import { SkillDatabase } from '../skills/SkillDatabase.js';
 import { addClickOrTouch } from '../utils/addClickOrTouch.js';
 
 /**
