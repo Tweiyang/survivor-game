@@ -1,5 +1,6 @@
 import { SkillComponent } from '../components/SkillComponent.js';
 import { addClickOrTouch } from '../utils/addClickOrTouch.js';
+import { getUIScale, isSmallScreen } from '../utils/UIScale.js';
 
 /**
  * SkillSelectUI — 升级技能三选一弹窗
@@ -139,30 +140,50 @@ export class SkillSelectUI {
         ctx.fillStyle = 'rgba(0, 0, 0, 0.75)';
         ctx.fillRect(0, 0, cw, ch);
 
+        const s = getUIScale(cw, ch);
+        const small = isSmallScreen(cw);
+        const vertical = cw < ch; // 竖屏
+
         // 标题
-        ctx.font = 'bold 28px monospace';
+        ctx.font = `bold ${Math.round(28 * s)}px monospace`;
         ctx.fillStyle = '#FFD700';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.fillText('LEVEL UP! 选择一个技能', cw / 2, ch / 2 - 160);
+        const titleText = small ? 'LEVEL UP!' : 'LEVEL UP! 选择一个技能';
+        const titleY = vertical ? Math.round(40 * s) : Math.round(ch / 2 - 160 * s);
+        ctx.fillText(titleText, cw / 2, titleY);
 
-        // 卡片布局
-        const cardW = 180;
-        const cardH = 240;
-        const gap = 20;
-        const totalW = this.candidates.length * cardW + (this.candidates.length - 1) * gap;
-        const startX = (cw - totalW) / 2;
-        const cardY = ch / 2 - cardH / 2 + 10;
+        // 卡片布局 — 竖屏纵向排列，横屏/PC 横向排列
+        const cardW = Math.round((small ? 140 : 180) * s);
+        const cardH = Math.round((small ? 180 : 240) * s);
+        const gap = Math.round((small ? 10 : 20) * s);
 
         this._cardRects = [];
 
-        for (let i = 0; i < this.candidates.length; i++) {
-            const candidate = this.candidates[i];
-            const cardX = startX + i * (cardW + gap);
+        if (vertical) {
+            // 竖屏：卡片纵向排列
+            const totalH = this.candidates.length * cardH + (this.candidates.length - 1) * gap;
+            const startY = Math.max(titleY + 30 * s, (ch - totalH) / 2);
+            const cardX = (cw - cardW) / 2;
 
-            this._cardRects.push({ x: cardX, y: cardY, w: cardW, h: cardH });
+            for (let i = 0; i < this.candidates.length; i++) {
+                const candidate = this.candidates[i];
+                const cardYi = startY + i * (cardH + gap);
+                this._cardRects.push({ x: cardX, y: cardYi, w: cardW, h: cardH });
+                this._renderCard(ctx, cardX, cardYi, cardW, cardH, candidate, s);
+            }
+        } else {
+            // 横屏/PC：卡片横向排列
+            const totalW = this.candidates.length * cardW + (this.candidates.length - 1) * gap;
+            const startX = (cw - totalW) / 2;
+            const cardY = ch / 2 - cardH / 2 + Math.round(10 * s);
 
-            this._renderCard(ctx, cardX, cardY, cardW, cardH, candidate);
+            for (let i = 0; i < this.candidates.length; i++) {
+                const candidate = this.candidates[i];
+                const cardX = startX + i * (cardW + gap);
+                this._cardRects.push({ x: cardX, y: cardY, w: cardW, h: cardH });
+                this._renderCard(ctx, cardX, cardY, cardW, cardH, candidate, s);
+            }
         }
 
         ctx.restore();
@@ -172,7 +193,7 @@ export class SkillSelectUI {
      * 渲染单张技能卡片
      * @private
      */
-    _renderCard(ctx, x, y, w, h, candidate) {
+    _renderCard(ctx, x, y, w, h, candidate, s = 1) {
         const config = candidate.config;
         const isUpgrade = candidate.isUpgrade;
         const currentLevel = candidate.currentLevel;
@@ -190,13 +211,13 @@ export class SkillSelectUI {
 
         // NEW! 标签 或 升级标签
         if (!isUpgrade) {
-            ctx.font = 'bold 12px monospace';
+            ctx.font = `bold ${Math.round(12 * s)}px monospace`;
             ctx.fillStyle = '#00FF88';
             ctx.textAlign = 'right';
             ctx.textBaseline = 'top';
             ctx.fillText('NEW!', x + w - 8, y + 6);
         } else {
-            ctx.font = 'bold 11px monospace';
+            ctx.font = `bold ${Math.round(11 * s)}px monospace`;
             ctx.fillStyle = '#FFD700';
             ctx.textAlign = 'right';
             ctx.textBaseline = 'top';
@@ -204,56 +225,55 @@ export class SkillSelectUI {
         }
 
         // 图标
-        ctx.font = '36px sans-serif';
+        ctx.font = `${Math.round(36 * s)}px sans-serif`;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.fillText(config.icon || '?', x + w / 2, y + 50);
+        ctx.fillText(config.icon || '?', x + w / 2, y + Math.round(50 * s));
 
         // 名称
-        ctx.font = 'bold 14px monospace';
+        ctx.font = `bold ${Math.round(14 * s)}px monospace`;
         ctx.fillStyle = '#FFFFFF';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'top';
-        ctx.fillText(config.name, x + w / 2, y + 80);
+        ctx.fillText(config.name, x + w / 2, y + Math.round(80 * s));
 
         // 类型标签
-        ctx.font = '11px monospace';
+        ctx.font = `${Math.round(11 * s)}px monospace`;
         ctx.fillStyle = isWeapon ? '#FF8844' : '#44AAFF';
-        ctx.fillText(isWeapon ? '武器' : '被动', x + w / 2, y + 100);
+        ctx.fillText(isWeapon ? '武器' : '被动', x + w / 2, y + Math.round(100 * s));
 
         // 描述
-        ctx.font = '11px monospace';
+        ctx.font = `${Math.round(11 * s)}px monospace`;
         ctx.fillStyle = '#CCCCCC';
         ctx.textAlign = 'center';
-        // 简单换行
         const desc = config.description || '';
         const maxChars = 10;
         for (let j = 0; j < desc.length; j += maxChars) {
             const line = desc.substring(j, j + maxChars);
-            ctx.fillText(line, x + w / 2, y + 125 + (j / maxChars) * 16);
+            ctx.fillText(line, x + w / 2, y + Math.round((125 + (j / maxChars) * 16) * s));
         }
 
         // 效果预览
-        ctx.font = '11px monospace';
+        ctx.font = `${Math.round(11 * s)}px monospace`;
         ctx.fillStyle = '#88FF88';
         ctx.textAlign = 'center';
         const levelData = config.levels ? config.levels[nextLevel - 1] : null;
         if (levelData) {
             if (config.type === 'weapon') {
                 const info = `伤害:${levelData.damage} 射速:${levelData.fireRate}s ×${levelData.count}`;
-                ctx.fillText(info, x + w / 2, y + h - 45);
+                ctx.fillText(info, x + w / 2, y + h - Math.round(45 * s));
             } else {
                 const valStr = config.modType === 'percentAdd'
                     ? `+${Math.round(levelData.value * 100)}%`
                     : `+${levelData.value}`;
-                ctx.fillText(`${config.stat}: ${valStr}`, x + w / 2, y + h - 45);
+                ctx.fillText(`${config.stat}: ${valStr}`, x + w / 2, y + h - Math.round(45 * s));
             }
         }
 
         // 底部提示
-        ctx.font = '10px monospace';
+        ctx.font = `${Math.round(10 * s)}px monospace`;
         ctx.fillStyle = '#666666';
-        ctx.fillText('点击选择', x + w / 2, y + h - 15);
+        ctx.fillText('点击选择', x + w / 2, y + h - Math.round(15 * s));
     }
 
     /** 清理 */

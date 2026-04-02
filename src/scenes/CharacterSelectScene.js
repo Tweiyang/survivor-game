@@ -2,6 +2,7 @@ import { Scene } from '../core/Scene.js';
 import { AudioManager } from '../systems/AudioManager.js';
 import { BGMController } from '../systems/BGMController.js';
 import { addClickOrTouch } from '../utils/addClickOrTouch.js';
+import { getUIScale, isSmallScreen } from '../utils/UIScale.js';
 
 const DATA_BASE_PATH = './assets/data';
 
@@ -90,55 +91,82 @@ export class CharacterSelectScene extends Scene {
         ctx.fillStyle = '#1a1a2e';
         ctx.fillRect(0, 0, cw, ch);
 
+        const sc = getUIScale(cw, ch);
+        const small = isSmallScreen(cw);
+        const vertical = cw < ch; // 竖屏
+
         // 标题
-        ctx.font = 'bold 36px monospace';
+        ctx.font = `bold ${Math.round(36 * sc)}px monospace`;
         ctx.fillStyle = '#FFFFFF';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.fillText('选择角色', cw / 2, 50);
+        const titleY = Math.round(50 * sc);
+        ctx.fillText('选择角色', cw / 2, titleY);
 
-        ctx.font = '14px monospace';
-        ctx.fillStyle = '#888888';
-        ctx.fillText('SELECT YOUR CHARACTER', cw / 2, 78);
+        if (!small) {
+            ctx.font = `${Math.round(14 * sc)}px monospace`;
+            ctx.fillStyle = '#888888';
+            ctx.fillText('SELECT YOUR CHARACTER', cw / 2, titleY + Math.round(28 * sc));
+        }
 
         // 计算卡片布局
         const cardCount = this.characterIds.length;
-        const cardW = 200;
-        const cardH = 320;
-        const gap = 30;
-        const totalW = cardCount * cardW + (cardCount - 1) * gap;
-        const startX = (cw - totalW) / 2;
-        const startY = 110;
+        const cardW = Math.round((small ? 150 : 200) * sc);
+        const cardH = Math.round((small ? 220 : 320) * sc);
+        const gap = Math.round((small ? 15 : 30) * sc);
 
         this._cardRects = [];
 
         // 收集属性最大值用于归一化
         const maxStats = { maxHp: 0, attack: 0, moveSpeed: 0, defense: 0 };
         for (const id of this.characterIds) {
-            const s = this.characters[id].stats;
-            if (s.maxHp > maxStats.maxHp) maxStats.maxHp = s.maxHp;
-            if (s.attack > maxStats.attack) maxStats.attack = s.attack;
-            if (s.moveSpeed > maxStats.moveSpeed) maxStats.moveSpeed = s.moveSpeed;
-            if (s.defense > maxStats.defense) maxStats.defense = s.defense;
+            const st = this.characters[id].stats;
+            if (st.maxHp > maxStats.maxHp) maxStats.maxHp = st.maxHp;
+            if (st.attack > maxStats.attack) maxStats.attack = st.attack;
+            if (st.moveSpeed > maxStats.moveSpeed) maxStats.moveSpeed = st.moveSpeed;
+            if (st.defense > maxStats.defense) maxStats.defense = st.defense;
         }
 
-        // 绘制每张角色卡片
-        for (let i = 0; i < cardCount; i++) {
-            const x = startX + i * (cardW + gap);
-            const y = startY;
-            const charId = this.characterIds[i];
-            const char = this.characters[charId];
-            const isSelected = i === this.selectedIndex;
+        let lastCardBottom = 0;
 
-            this._cardRects.push({ x, y, w: cardW, h: cardH });
-            this._drawCard(ctx, x, y, cardW, cardH, char, isSelected, maxStats);
+        if (vertical && small) {
+            // 竖屏小屏：卡片纵向排列
+            const totalH = cardCount * cardH + (cardCount - 1) * gap;
+            const startY = Math.max(titleY + Math.round(40 * sc), (ch - totalH - 80 * sc) / 2);
+            const cardX = (cw - cardW) / 2;
+
+            for (let i = 0; i < cardCount; i++) {
+                const y = startY + i * (cardH + gap);
+                const charId = this.characterIds[i];
+                const char = this.characters[charId];
+                const isSelected = i === this.selectedIndex;
+                this._cardRects.push({ x: cardX, y, w: cardW, h: cardH });
+                this._drawCard(ctx, cardX, y, cardW, cardH, char, isSelected, maxStats, sc);
+                lastCardBottom = y + cardH;
+            }
+        } else {
+            // 横屏/PC：卡片横向排列
+            const totalW = cardCount * cardW + (cardCount - 1) * gap;
+            const startX = (cw - totalW) / 2;
+            const startY = titleY + Math.round(50 * sc);
+
+            for (let i = 0; i < cardCount; i++) {
+                const x = startX + i * (cardW + gap);
+                const y = startY;
+                const charId = this.characterIds[i];
+                const char = this.characters[charId];
+                const isSelected = i === this.selectedIndex;
+                this._cardRects.push({ x, y, w: cardW, h: cardH });
+                this._drawCard(ctx, x, y, cardW, cardH, char, isSelected, maxStats, sc);
+                lastCardBottom = y + cardH;
+            }
         }
 
         // 确认按钮
-        const btnW = 220;
-        const btnH = 50;
+        const btnW = Math.round(220 * sc);
+        const btnH = Math.round(50 * sc);
         const btnX = (cw - btnW) / 2;
-        const btnY = startY + cardH + 30;
+        const btnY = Math.min(lastCardBottom + Math.round(20 * sc), ch - btnH - 10);
         this._btnRect = { x: btnX, y: btnY, w: btnW, h: btnH };
 
         // 按钮背景
@@ -149,7 +177,7 @@ export class CharacterSelectScene extends Scene {
         ctx.strokeRect(btnX, btnY, btnW, btnH);
 
         // 按钮文字
-        ctx.font = 'bold 20px monospace';
+        ctx.font = `bold ${Math.round(20 * sc)}px monospace`;
         ctx.fillStyle = '#FFFFFF';
         ctx.textAlign = 'center';
         ctx.fillText('⚔️ 开始战斗', btnX + btnW / 2, btnY + btnH / 2);
@@ -161,7 +189,7 @@ export class CharacterSelectScene extends Scene {
      * 绘制单张角色卡片
      * @private
      */
-    _drawCard(ctx, x, y, w, h, char, isSelected, maxStats) {
+    _drawCard(ctx, x, y, w, h, char, isSelected, maxStats, sc = 1) {
         // 卡片背景
         ctx.fillStyle = isSelected ? '#2a2a4e' : '#16213e';
         ctx.fillRect(x, y, w, h);
@@ -172,7 +200,7 @@ export class CharacterSelectScene extends Scene {
         ctx.strokeRect(x, y, w, h);
 
         // 角色图标
-        ctx.font = '40px serif';
+        ctx.font = `${Math.round(40 * sc)}px serif`;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText(char.icon || '?', x + w / 2, y + 40);
