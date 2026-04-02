@@ -1,0 +1,649 @@
+
+       ___      _
+      / __\___ | |_   _ ___  ___ _   _ ___
+     / /  / _ \| | | | / __|/ _ \ | | / __|
+    / /__| (_) | | |_| \__ \  __/ |_| \__ \
+    \____/\___/|_|\__, |___/\___|\__,_|___/
+                  |___/
+
+     · Multiplayer Framework for Node.js ·
+
+💖 Consider becoming a Sponsor on GitHub → https://github.com/sponsors/endel
+🌟 Give us a star on GitHub → https://github.com/colyseus/colyseus
+☁️  Deploy and scale your project on Colyseus Cloud → https://cloud.colyseus.io
+
+
+[Server] 🎮 Colyseus server listening on ws://localhost:2567
+[Server] Room types: battle (max 4 players)
+[BattleRoom] Loaded 3 characters
+[BattleRoom] Loaded levels config
+[BattleRoom] Loaded formulas config
+[BattleRoom] Loaded difficulty config
+[BattleRoom] Room created: M5ulq75qT (max 4 players)
+[BattleRoom] zMC7KucXe joined as ranger (1/4)
+[BattleRoom] zMC7KucXe ready: true (1/1)
+[DifficultyScaler] Players: 1, multiplier: 1x
+[ServerPhysics] Map loaded: 28×10 tiles, tileSize=64
+[ServerSpawner] Loaded 9 spawn points, difficulty: 1x
+[BattleRoom] 🎮 Game started! 1 players, difficulty: 1x, tick: 20Hz
+[BattleRoom] zMC7KucXe ready: false (0/1)
+[BattleRoom] zMC7KucXe ready: true (1/1)
+[BattleRoom] Monster killed: m_4 (slime)
+[BattleRoom] Monster killed: m_2 (slime)
+[BattleRoom] Monster killed: m_3 (bat)
+[BattleRoom] Boss gate physics opened at room boss_room (16, 4) size 1x2
+[BattleRoom] Boss gate opened! Kills: 3/3
+[BattleRoom] Monster killed: m_1 (slime)
+[BattleRoom] Monster killed: m_5 (bat)
+[BattleRoom] Monster killed: m_6 (slime)
+[BattleRoom] zMC7KucXe left (consented: false), remaining: 0
+[BattleRoom] All players left, disposing room M5ulq75qT
+[BattleRoom] Room M5ulq75qT disposed
+[BattleRoom] Loaded 3 characters
+[BattleRoom] Loaded levels config
+[BattleRoom] Loaded formulas config
+[BattleRoom] Loaded difficulty config
+[BattleRoom] Room created: 7B9A8OMie (max 4 players)
+[BattleRoom] vTvQKvnMU joined as ranger (1/4)
+[BattleRoom] vTvQKvnMU ready: true (1/1)
+[DifficultyScaler] Players: 1, multiplier: 1x
+[ServerPhysics] Map loaded: 28×10 tiles, tileSize=64
+[ServerSpawner] Loaded 9 spawn points, difficulty: 1x
+[BattleRoom] 🎮 Game started! 1 players, difficulty: 1x, tick: 20Hz
+[BattleRoom] vTvQKvnMU ready: false (0/1)
+[BattleRoom] Monster killed: m_3 (bat)
+[BattleRoom] Monster killed: m_4 (slime)
+[BattleRoom] Monster killed: m_2 (slime)
+[BattleRoom] Boss gate physics opened at room boss_room (16, 4) size 1x2
+[BattleRoom] Boss gate opened! Kills: 3/3
+[BattleRoom] Monster killed: m_1 (slime)
+[BattleRoom] Monster killed: m_5 (bat)
+[BattleRoom] Monster killed: m_6 (slime)
+[BattleRoom] Monster killed: m_8 (bat)
+[BattleRoom] Monster killed: m_7 (slime)
+[BattleRoom] Monster killed: m_9 (boss_slime)
+[BattleRoom] ★ Boss killed! Triggering level transition...
+[BattleRoom] Boss defeated! Level 1/2
+[ServerPhysics] Map loaded: 41×15 tiles, tileSize=64
+[ServerSpawner] Loaded 14 spawn points, difficulty: 1x
+[BattleRoom] Loaded level 2: 毒雾沼泽
+[BattleRoom] Monster killed: m_10 (slime)
+[BattleRoom] Monster killed: m_11 (bat)
+[BattleRoom] Monster killed: m_14 (bat)
+[BattleRoom] Monster killed: m_15 (bat)
+[BattleRoom] Monster killed: m_18 (bat)
+[BattleRoom] Monster killed: m_12 (slime)
+[BattleRoom] Monster killed: m_13 (slime)
+[BattleRoom] Monster killed: m_17 (bat)
+[BattleRoom] Boss gate physics opened at room boss_room (27, 8) size 1x2
+[BattleRoom] Boss gate opened! Kills: 8/8
+[BattleRoom] Monster killed: m_16 (slime)
+[BattleRoom] Monster killed: m_20 (bat)
+[BattleRoom] Monster killed: m_21 (bat)
+[BattleRoom] Monster killed: m_19 (slime)
+[BattleRoom] Monster killed: m_22 (slime)
+[BattleRoom] Game Over — all players dead
+[BattleRoom] vTvQKvnMU left (consented: false), remaining: 0
+[BattleRoom] All players left, disposing room 7B9A8OMie
+[BattleRoom] Room 7B9A8OMie disposed
+[BattleRoom] Loaded 3 characters
+[BattleRoom] Loaded levels config
+[BattleRoom] Loaded formulas config
+[BattleRoom] Loaded difficulty config
+[BattleRoom] Room created: qYcgV0chb (max 4 players)
+[BattleRoom] rkKuMURuB joined as ranger (1/4)
+[BattleRoom] rkKuMURuB ready: true (1/1)
+[DifficultyScaler] Players: 1, multiplier: 1x
+[ServerPhysics] Map loaded: 28×10 tiles, tileSize=64
+[ServerSpawner] Loaded 9 spawn points, difficulty: 1x
+[BattleRoom] 🎮 Game started! 1 players, difficulty: 1x, tick: 20Hz
+[BattleRoom] rkKuMURuB ready: false (0/1)
+[BattleRoom] Monster killed: m_3 (bat)
+[BattleRoom] Monster killed: m_4 (slime)
+[BattleRoom] Monster killed: m_2 (slime)
+[BattleRoom] Boss gate physics opened at room boss_room (16, 4) size 1x2
+[BattleRoom] Boss gate opened! Kills: 3/3
+[BattleRoom] Monster killed: m_1 (slime)
+[BattleRoom] Monster killed: m_5 (bat)
+[BattleRoom] Monster killed: m_8 (bat)
+[BattleRoom] Monster killed: m_6 (slime)
+[BattleRoom] Monster killed: m_7 (slime)
+[BattleRoom] Monster killed: m_9 (boss_slime)
+[BattleRoom] ★ Boss killed! Triggering level transition...
+[BattleRoom] Boss defeated! Level 1/2
+[ServerPhysics] Map loaded: 41×15 tiles, tileSize=64
+[ServerSpawner] Loaded 14 spawn points, difficulty: 1x
+[BattleRoom] Loaded level 2: 毒雾沼泽
+[BattleRoom] Monster killed: m_10 (slime)
+[BattleRoom] Monster killed: m_11 (bat)
+[BattleRoom] Monster killed: m_14 (bat)
+[BattleRoom] Monster killed: m_15 (bat)
+[BattleRoom] Monster killed: m_12 (slime)
+[BattleRoom] Monster killed: m_13 (slime)
+[BattleRoom] Monster killed: m_18 (bat)
+[BattleRoom] Monster killed: m_17 (bat)
+[BattleRoom] Boss gate physics opened at room boss_room (27, 8) size 1x2
+[BattleRoom] Boss gate opened! Kills: 8/8
+[BattleRoom] Monster killed: m_16 (slime)
+[BattleRoom] Monster killed: m_21 (bat)
+[BattleRoom] Monster killed: m_20 (bat)
+[BattleRoom] Game Over — all players dead
+[BattleRoom] rkKuMURuB left (consented: false), remaining: 0
+[BattleRoom] All players left, disposing room qYcgV0chb
+[BattleRoom] Room qYcgV0chb disposed
+[BattleRoom] Loaded 3 characters
+[BattleRoom] Loaded levels config
+[BattleRoom] Loaded formulas config
+[BattleRoom] Loaded difficulty config
+[BattleRoom] Room created: t-pCfww4D (max 4 players)
+[BattleRoom] mEiXffbeJ joined as ranger (1/4)
+[BattleRoom] mEiXffbeJ ready: true (1/1)
+[DifficultyScaler] Players: 1, multiplier: 1x
+[ServerPhysics] Map loaded: 28×10 tiles, tileSize=64
+[ServerSpawner] Loaded 9 spawn points, difficulty: 1x
+[BattleRoom] 🎮 Game started! 1 players, difficulty: 1x, tick: 20Hz
+[BattleRoom] mEiXffbeJ ready: false (0/1)
+[BattleRoom] Monster killed: m_1 (slime)
+[BattleRoom] Monster killed: m_3 (bat)
+[BattleRoom] Monster killed: m_2 (slime)
+[BattleRoom] Boss gate physics opened at room boss_room (16, 4) size 1x2
+[BattleRoom] Boss gate opened! Kills: 3/3
+[BattleRoom] Monster killed: m_4 (slime)
+[BattleRoom] Monster killed: m_5 (bat)
+[BattleRoom] Monster killed: m_8 (bat)
+[BattleRoom] Monster killed: m_6 (slime)
+[BattleRoom] Monster killed: m_7 (slime)
+[BattleRoom] Monster killed: m_9 (boss_slime)
+[BattleRoom] ★ Boss killed! Triggering level transition...
+[BattleRoom] Boss defeated! Level 1/2
+[ServerPhysics] Map loaded: 41×15 tiles, tileSize=64
+[ServerSpawner] Loaded 14 spawn points, difficulty: 1x
+[BattleRoom] Loaded level 2: 毒雾沼泽
+[BattleRoom] Monster killed: m_10 (slime)
+[BattleRoom] Monster killed: m_11 (bat)
+[BattleRoom] Monster killed: m_14 (bat)
+[BattleRoom] Monster killed: m_15 (bat)
+[BattleRoom] Monster killed: m_12 (slime)
+[BattleRoom] Monster killed: m_13 (slime)
+[BattleRoom] Monster killed: m_18 (bat)
+[BattleRoom] Monster killed: m_16 (slime)
+[BattleRoom] Boss gate physics opened at room boss_room (27, 8) size 1x2
+[BattleRoom] Boss gate opened! Kills: 8/8
+[BattleRoom] Monster killed: m_17 (bat)
+[BattleRoom] Monster killed: m_21 (bat)
+[BattleRoom] Monster killed: m_23 (boss_slime)
+[BattleRoom] ★ Boss killed! Triggering level transition...
+[BattleRoom] Boss defeated! Level 2/2
+[BattleRoom] mEiXffbeJ left (consented: true), remaining: 0
+[BattleRoom] All players left, disposing room t-pCfww4D
+[BattleRoom] Room t-pCfww4D disposed
+[BattleRoom] Loaded 3 characters
+[BattleRoom] Loaded levels config
+[BattleRoom] Loaded formulas config
+[BattleRoom] Loaded difficulty config
+[BattleRoom] Room created: G0EQPSOjC (max 4 players)
+[BattleRoom] gVbRVM2Jw joined as ranger (1/4)
+[BattleRoom] gVbRVM2Jw ready: true (1/1)
+[DifficultyScaler] Players: 1, multiplier: 1x
+[ServerPhysics] Map loaded: 28×10 tiles, tileSize=64
+[ServerSpawner] Loaded 9 spawn points, difficulty: 1x
+[BattleRoom] 🎮 Game started! 1 players, difficulty: 1x, tick: 20Hz
+[BattleRoom] gVbRVM2Jw ready: false (0/1)
+[BattleRoom] gVbRVM2Jw ready: true (1/1)
+[BattleRoom] Monster killed: m_1 (slime)
+[BattleRoom] Monster killed: m_3 (bat)
+[BattleRoom] Monster killed: m_2 (slime)
+[BattleRoom] Boss gate physics opened at room boss_room (16, 4) size 1x2
+[BattleRoom] Boss gate opened! Kills: 3/3
+[BattleRoom] Monster killed: m_4 (slime)
+[BattleRoom] Monster killed: m_5 (bat)
+[BattleRoom] Monster killed: m_6 (slime)
+[BattleRoom] gVbRVM2Jw left (consented: false), remaining: 0
+[BattleRoom] All players left, disposing room G0EQPSOjC
+[BattleRoom] Room G0EQPSOjC disposed
+[BattleRoom] Loaded 3 characters
+[BattleRoom] Loaded levels config
+[BattleRoom] Loaded formulas config
+[BattleRoom] Loaded difficulty config
+[BattleRoom] Room created: UmNMw_R7c (max 4 players)
+[BattleRoom] qHjwiLphL joined as ranger (1/4)
+[BattleRoom] qHjwiLphL ready: true (1/1)
+[DifficultyScaler] Players: 1, multiplier: 1x
+[ServerPhysics] Map loaded: 28×10 tiles, tileSize=64
+[ServerSpawner] Loaded 9 spawn points, difficulty: 1x
+[BattleRoom] 🎮 Game started! 1 players, difficulty: 1x, tick: 20Hz
+[BattleRoom] qHjwiLphL ready: false (0/1)
+[BattleRoom] Monster killed: m_3 (bat)
+[BattleRoom] Monster killed: m_2 (slime)
+[BattleRoom] Monster killed: m_1 (slime)
+[BattleRoom] Boss gate physics opened at room boss_room (16, 4) size 1x2
+[BattleRoom] Boss gate opened! Kills: 3/3
+[BattleRoom] Monster killed: m_4 (slime)
+[BattleRoom] Monster killed: m_5 (bat)
+[BattleRoom] Monster killed: m_8 (bat)
+[BattleRoom] Game Over — all players dead
+[BattleRoom] qHjwiLphL left (consented: false), remaining: 0
+[BattleRoom] All players left, disposing room UmNMw_R7c
+[BattleRoom] Room UmNMw_R7c disposed
+[BattleRoom] Loaded 3 characters
+[BattleRoom] Loaded levels config
+[BattleRoom] Loaded formulas config
+[BattleRoom] Loaded difficulty config
+[BattleRoom] Room created: Wel7LqBoI (max 4 players)
+[BattleRoom] d8FHbUinO joined as ranger (1/4)
+[BattleRoom] d8FHbUinO ready: true (1/1)
+[DifficultyScaler] Players: 1, multiplier: 1x
+[ServerPhysics] Map loaded: 28×10 tiles, tileSize=64
+[ServerSpawner] Loaded 9 spawn points, difficulty: 1x
+[BattleRoom] 🎮 Game started! 1 players, difficulty: 1x, tick: 20Hz
+[BattleRoom] d8FHbUinO ready: false (0/1)
+[BattleRoom] Monster killed: m_3 (bat)
+[BattleRoom] Monster killed: m_1 (slime)
+[BattleRoom] Monster killed: m_2 (slime)
+[BattleRoom] Boss gate physics opened at room boss_room (16, 4) size 1x2
+[BattleRoom] Boss gate opened! Kills: 3/3
+[BattleRoom] Monster killed: m_4 (slime)
+[BattleRoom] Monster killed: m_5 (bat)
+[BattleRoom] Monster killed: m_8 (bat)
+[BattleRoom] Monster killed: m_7 (slime)
+[BattleRoom] Monster killed: m_6 (slime)
+[BattleRoom] Monster killed: m_9 (boss_slime)
+[BattleRoom] ★ Boss killed! Triggering level transition...
+[BattleRoom] Boss defeated! Level 1/2
+[ServerPhysics] Map loaded: 41×15 tiles, tileSize=64
+[ServerSpawner] Loaded 14 spawn points, difficulty: 1x
+[BattleRoom] Loaded level 2: 毒雾沼泽
+[BattleRoom] Monster killed: m_10 (slime)
+[BattleRoom] Monster killed: m_11 (bat)
+[BattleRoom] Monster killed: m_14 (bat)
+[BattleRoom] Monster killed: m_15 (bat)
+[BattleRoom] Monster killed: m_12 (slime)
+[BattleRoom] Monster killed: m_13 (slime)
+[BattleRoom] Monster killed: m_18 (bat)
+[BattleRoom] Monster killed: m_16 (slime)
+[BattleRoom] Boss gate physics opened at room boss_room (27, 8) size 1x2
+[BattleRoom] Boss gate opened! Kills: 8/8
+[BattleRoom] Monster killed: m_21 (bat)
+[BattleRoom] Monster killed: m_17 (bat)
+[BattleRoom] Monster killed: m_20 (bat)
+[BattleRoom] Monster killed: m_22 (slime)
+[BattleRoom] Game Over — all players dead
+[BattleRoom] d8FHbUinO left (consented: false), remaining: 0
+[BattleRoom] All players left, disposing room Wel7LqBoI
+[BattleRoom] Room Wel7LqBoI disposed
+[BattleRoom] Loaded 3 characters
+[BattleRoom] Loaded levels config
+[BattleRoom] Loaded formulas config
+[BattleRoom] Loaded difficulty config
+[BattleRoom] Room created: juXFr2il1 (max 4 players)
+[BattleRoom] tOy3PDqpj joined as ranger (1/4)
+[BattleRoom] tOy3PDqpj left (consented: false), remaining: 0
+[BattleRoom] All players left, disposing room juXFr2il1
+[BattleRoom] Room juXFr2il1 disposed
+[BattleRoom] Loaded 3 characters
+[BattleRoom] Loaded levels config
+[BattleRoom] Loaded formulas config
+[BattleRoom] Loaded difficulty config
+[BattleRoom] Room created: RfZXbC-b7 (max 4 players)
+[BattleRoom] o41-ynwMq joined as ranger (1/4)
+[BattleRoom] o41-ynwMq ready: true (1/1)
+[DifficultyScaler] Players: 1, multiplier: 1x
+[ServerPhysics] Map loaded: 28×10 tiles, tileSize=64
+[ServerSpawner] Loaded 9 spawn points, difficulty: 1x
+[BattleRoom] 🎮 Game started! 1 players, difficulty: 1x, tick: 20Hz
+[BattleRoom] o41-ynwMq ready: false (0/1)
+[BattleRoom] Monster killed: m_3 (bat)
+[BattleRoom] Monster killed: m_2 (slime)
+[BattleRoom] Monster killed: m_1 (slime)
+[BattleRoom] Boss gate physics opened at room boss_room (16, 4) size 1x2
+[BattleRoom] Boss gate opened! Kills: 3/3
+[BattleRoom] Monster killed: m_4 (slime)
+[BattleRoom] Monster killed: m_5 (bat)
+[BattleRoom] Monster killed: m_8 (bat)
+[BattleRoom] Monster killed: m_6 (slime)
+[BattleRoom] Monster killed: m_7 (slime)
+[BattleRoom] Monster killed: m_9 (boss_slime)
+[BattleRoom] ★ Boss killed! Triggering level transition...
+[BattleRoom] Boss defeated! Level 1/2
+[ServerPhysics] Map loaded: 41×15 tiles, tileSize=64
+[ServerSpawner] Loaded 14 spawn points, difficulty: 1x
+[BattleRoom] Loaded level 2: 毒雾沼泽
+[BattleRoom] Monster killed: m_10 (slime)
+[BattleRoom] Monster killed: m_11 (bat)
+[BattleRoom] Monster killed: m_14 (bat)
+[BattleRoom] Monster killed: m_15 (bat)
+[BattleRoom] Monster killed: m_12 (slime)
+[BattleRoom] Monster killed: m_13 (slime)
+[BattleRoom] Monster killed: m_18 (bat)
+[BattleRoom] Monster killed: m_16 (slime)
+[BattleRoom] Boss gate physics opened at room boss_room (27, 8) size 1x2
+[BattleRoom] Boss gate opened! Kills: 8/8
+[BattleRoom] Monster killed: m_20 (bat)
+[BattleRoom] Monster killed: m_21 (bat)
+[BattleRoom] Monster killed: m_19 (slime)
+[BattleRoom] Monster killed: m_22 (slime)
+[BattleRoom] o41-ynwMq left (consented: false), remaining: 0
+[BattleRoom] All players left, disposing room RfZXbC-b7
+[BattleRoom] Room RfZXbC-b7 disposed
+[BattleRoom] Loaded 3 characters
+[BattleRoom] Loaded levels config
+[BattleRoom] Loaded formulas config
+[BattleRoom] Loaded difficulty config
+[BattleRoom] Room created: ShJQ18Tqq (max 4 players)
+[BattleRoom] xaGrYMgXU joined as ranger (1/4)
+[BattleRoom] xaGrYMgXU ready: true (1/1)
+[DifficultyScaler] Players: 1, multiplier: 1x
+[ServerPhysics] Map loaded: 28×10 tiles, tileSize=64
+[ServerSpawner] Loaded 9 spawn points, difficulty: 1x
+[BattleRoom] 🎮 Game started! 1 players, difficulty: 1x, tick: 20Hz
+[BattleRoom] xaGrYMgXU ready: false (0/1)
+[BattleRoom] Monster killed: m_3 (bat)
+[BattleRoom] Monster killed: m_2 (slime)
+[BattleRoom] Monster killed: m_1 (slime)
+[BattleRoom] Boss gate physics opened at room boss_room (16, 4) size 1x2
+[BattleRoom] Boss gate opened! Kills: 3/3
+[BattleRoom] Monster killed: m_4 (slime)
+[BattleRoom] Monster killed: m_5 (bat)
+[BattleRoom] Monster killed: m_8 (bat)
+[BattleRoom] Monster killed: m_6 (slime)
+[BattleRoom] Game Over — all players dead
+[BattleRoom] xaGrYMgXU left (consented: false), remaining: 0
+[BattleRoom] All players left, disposing room ShJQ18Tqq
+[BattleRoom] Room ShJQ18Tqq disposed
+[BattleRoom] Loaded 3 characters
+[BattleRoom] Loaded levels config
+[BattleRoom] Loaded formulas config
+[BattleRoom] Loaded difficulty config
+[BattleRoom] Room created: zEWWhRSSU (max 4 players)
+[BattleRoom] Zont03VVb joined as ranger (1/4)
+[BattleRoom] Zont03VVb ready: true (1/1)
+[DifficultyScaler] Players: 1, multiplier: 1x
+[ServerPhysics] Map loaded: 28×10 tiles, tileSize=64
+[ServerSpawner] Loaded 9 spawn points, difficulty: 1x
+[BattleRoom] 🎮 Game started! 1 players, difficulty: 1x, tick: 20Hz
+[BattleRoom] Zont03VVb ready: false (0/1)
+[BattleRoom] Monster killed: m_3 (bat)
+[BattleRoom] Monster killed: m_2 (slime)
+[BattleRoom] Monster killed: m_4 (slime)
+[BattleRoom] Boss gate physics opened at room boss_room (16, 4) size 1x2
+[BattleRoom] Boss gate opened! Kills: 3/3
+[BattleRoom] Monster killed: m_1 (slime)
+[BattleRoom] Monster killed: m_5 (bat)
+[BattleRoom] Monster killed: m_8 (bat)
+[BattleRoom] Monster killed: m_6 (slime)
+[BattleRoom] Monster killed: m_7 (slime)
+[BattleRoom] Monster killed: m_9 (boss_slime)
+[BattleRoom] ★ Boss killed! Triggering level transition...
+[BattleRoom] Boss defeated! Level 1/2
+[ServerPhysics] Map loaded: 41×15 tiles, tileSize=64
+[ServerSpawner] Loaded 14 spawn points, difficulty: 1x
+[BattleRoom] Loaded level 2: 毒雾沼泽
+[BattleRoom] Monster killed: m_10 (slime)
+[BattleRoom] Monster killed: m_11 (bat)
+[BattleRoom] Monster killed: m_14 (bat)
+[BattleRoom] Monster killed: m_15 (bat)
+[BattleRoom] Monster killed: m_12 (slime)
+[BattleRoom] Monster killed: m_16 (slime)
+[BattleRoom] Monster killed: m_13 (slime)
+[BattleRoom] Monster killed: m_18 (bat)
+[BattleRoom] Boss gate physics opened at room boss_room (27, 8) size 1x2
+[BattleRoom] Boss gate opened! Kills: 8/8
+[BattleRoom] Monster killed: m_17 (bat)
+[BattleRoom] Monster killed: m_21 (bat)
+[BattleRoom] Monster killed: m_22 (slime)
+[BattleRoom] Monster killed: m_23 (boss_slime)
+[BattleRoom] ★ Boss killed! Triggering level transition...
+[BattleRoom] Boss defeated! Level 2/2
+[BattleRoom] Zont03VVb left (consented: true), remaining: 0
+[BattleRoom] All players left, disposing room zEWWhRSSU
+[BattleRoom] Room zEWWhRSSU disposed
+[BattleRoom] Loaded 3 characters
+[BattleRoom] Loaded levels config
+[BattleRoom] Loaded formulas config
+[BattleRoom] Loaded difficulty config
+[BattleRoom] Room created: VTqo2Q2On (max 4 players)
+[BattleRoom] D-CVfvuM0 joined as vanguard (1/4)
+[BattleRoom] D-CVfvuM0 ready: true (1/1)
+[DifficultyScaler] Players: 1, multiplier: 1x
+[ServerPhysics] Map loaded: 28×10 tiles, tileSize=64
+[ServerSpawner] Loaded 9 spawn points, difficulty: 1x
+[BattleRoom] 🎮 Game started! 1 players, difficulty: 1x, tick: 20Hz
+[BattleRoom] D-CVfvuM0 ready: false (0/1)
+[BattleRoom] Monster killed: m_3 (bat)
+[BattleRoom] Monster killed: m_2 (slime)
+[BattleRoom] Monster killed: m_5 (bat)
+[BattleRoom] Boss gate physics opened at room boss_room (16, 4) size 1x2
+[BattleRoom] Boss gate opened! Kills: 3/3
+[BattleRoom] Monster killed: m_4 (slime)
+[BattleRoom] Monster killed: m_1 (slime)
+[BattleRoom] Monster killed: m_6 (slime)
+[BattleRoom] Monster killed: m_8 (bat)
+[BattleRoom] Monster killed: m_7 (slime)
+[BattleRoom] Monster killed: m_9 (boss_slime)
+[BattleRoom] ★ Boss killed! Triggering level transition...
+[BattleRoom] Boss defeated! Level 1/2
+[ServerPhysics] Map loaded: 41×15 tiles, tileSize=64
+[ServerSpawner] Loaded 14 spawn points, difficulty: 1x
+[BattleRoom] Loaded level 2: 毒雾沼泽
+[BattleRoom] Monster killed: m_10 (slime)
+[BattleRoom] Monster killed: m_11 (bat)
+[BattleRoom] Monster killed: m_14 (bat)
+[BattleRoom] Monster killed: m_15 (bat)
+[BattleRoom] Monster killed: m_12 (slime)
+[BattleRoom] Monster killed: m_18 (bat)
+[BattleRoom] Monster killed: m_13 (slime)
+[BattleRoom] Monster killed: m_16 (slime)
+[BattleRoom] Boss gate physics opened at room boss_room (27, 8) size 1x2
+[BattleRoom] Boss gate opened! Kills: 8/8
+[BattleRoom] Monster killed: m_17 (bat)
+[BattleRoom] Monster killed: m_21 (bat)
+[BattleRoom] D-CVfvuM0 left (consented: false), remaining: 0
+[BattleRoom] All players left, disposing room VTqo2Q2On
+[BattleRoom] Room VTqo2Q2On disposed
+[BattleRoom] Loaded 3 characters
+[BattleRoom] Loaded levels config
+[BattleRoom] Loaded formulas config
+[BattleRoom] Loaded difficulty config
+[BattleRoom] Room created: y0CcMVm_f (max 4 players)
+[BattleRoom] OyPAVYQ6S joined as vanguard (1/4)
+[BattleRoom] OyPAVYQ6S ready: true (1/1)
+[DifficultyScaler] Players: 1, multiplier: 1x
+[ServerPhysics] Map loaded: 28×10 tiles, tileSize=64
+[ServerSpawner] Loaded 9 spawn points, difficulty: 1x
+[BattleRoom] 🎮 Game started! 1 players, difficulty: 1x, tick: 20Hz
+[BattleRoom] OyPAVYQ6S ready: false (0/1)
+[BattleRoom] Monster killed: m_1 (slime)
+[BattleRoom] Monster killed: m_3 (bat)
+[BattleRoom] Monster killed: m_2 (slime)
+[BattleRoom] Boss gate physics opened at room boss_room (16, 4) size 1x2
+[BattleRoom] Boss gate opened! Kills: 3/3
+[BattleRoom] Monster killed: m_5 (bat)
+[BattleRoom] Monster killed: m_4 (slime)
+[BattleRoom] OyPAVYQ6S left (consented: false), remaining: 0
+[BattleRoom] All players left, disposing room y0CcMVm_f
+[BattleRoom] Room y0CcMVm_f disposed
+[BattleRoom] Loaded 3 characters
+[BattleRoom] Loaded levels config
+[BattleRoom] Loaded formulas config
+[BattleRoom] Loaded difficulty config
+[BattleRoom] Room created: fgkj0Hc9_ (max 4 players)
+[BattleRoom] u4LqftRAN joined as ranger (1/4)
+[BattleRoom] u4LqftRAN ready: true (1/1)
+[DifficultyScaler] Players: 1, multiplier: 1x
+[ServerPhysics] Map loaded: 28×10 tiles, tileSize=64
+[ServerSpawner] Loaded 9 spawn points, difficulty: 1x
+[BattleRoom] 🎮 Game started! 1 players, difficulty: 1x, tick: 20Hz
+[BattleRoom] u4LqftRAN ready: false (0/1)
+[BattleRoom] Monster killed: m_3 (bat)
+[BattleRoom] Monster killed: m_2 (slime)
+[BattleRoom] Monster killed: m_4 (slime)
+[BattleRoom] Boss gate physics opened at room boss_room (16, 4) size 1x2
+[BattleRoom] Boss gate opened! Kills: 3/3
+[BattleRoom] Monster killed: m_1 (slime)
+[BattleRoom] Monster killed: m_5 (bat)
+[BattleRoom] Monster killed: m_8 (bat)
+[BattleRoom] Monster killed: m_6 (slime)
+[BattleRoom] Monster killed: m_7 (slime)
+[BattleRoom] Monster killed: m_9 (boss_slime)
+[BattleRoom] ★ Boss killed! Triggering level transition...
+[BattleRoom] Boss defeated! Level 1/2
+[ServerPhysics] Map loaded: 41×15 tiles, tileSize=64
+[ServerSpawner] Loaded 14 spawn points, difficulty: 1x
+[BattleRoom] Loaded level 2: 毒雾沼泽
+[BattleRoom] Monster killed: m_10 (slime)
+[BattleRoom] Monster killed: m_11 (bat)
+[BattleRoom] Monster killed: m_14 (bat)
+[BattleRoom] Monster killed: m_15 (bat)
+[BattleRoom] Monster killed: m_16 (slime)
+[BattleRoom] u4LqftRAN left (consented: false), remaining: 0
+[BattleRoom] All players left, disposing room fgkj0Hc9_
+[BattleRoom] Room fgkj0Hc9_ disposed
+[BattleRoom] Loaded 3 characters
+[BattleRoom] Loaded levels config
+[BattleRoom] Loaded formulas config
+[BattleRoom] Loaded difficulty config
+[BattleRoom] Room created: m6ENTJ4wk (max 4 players)
+[BattleRoom] sVg-OZWN9 joined as ranger (1/4)
+[BattleRoom] sVg-OZWN9 ready: true (1/1)
+[DifficultyScaler] Players: 1, multiplier: 1x
+[ServerPhysics] Map loaded: 28×10 tiles, tileSize=64
+[ServerSpawner] Loaded 9 spawn points, difficulty: 1x
+[BattleRoom] 🎮 Game started! 1 players, difficulty: 1x, tick: 20Hz
+[BattleRoom] sVg-OZWN9 ready: false (0/1)
+[BattleRoom] Monster killed: m_3 (bat)
+[BattleRoom] Monster killed: m_2 (slime)
+[BattleRoom] Monster killed: m_1 (slime)
+[BattleRoom] Boss gate physics opened at room boss_room (16, 4) size 1x2
+[BattleRoom] Boss gate opened! Kills: 3/3
+[BattleRoom] Monster killed: m_4 (slime)
+[BattleRoom] Monster killed: m_5 (bat)
+[BattleRoom] Monster killed: m_8 (bat)
+[BattleRoom] Monster killed: m_6 (slime)
+[BattleRoom] Monster killed: m_9 (boss_slime)
+[BattleRoom] ★ Boss killed! Triggering level transition...
+[BattleRoom] Boss defeated! Level 1/2
+[ServerPhysics] Map loaded: 41×15 tiles, tileSize=64
+[ServerSpawner] Loaded 14 spawn points, difficulty: 1x
+[BattleRoom] Loaded level 2: 毒雾沼泽
+[BattleRoom] Monster killed: m_10 (slime)
+[BattleRoom] Monster killed: m_11 (bat)
+[BattleRoom] Monster killed: m_14 (bat)
+[BattleRoom] Monster killed: m_15 (bat)
+[BattleRoom] Monster killed: m_16 (slime)
+[BattleRoom] Monster killed: m_12 (slime)
+[BattleRoom] Monster killed: m_18 (bat)
+[BattleRoom] Monster killed: m_13 (slime)
+[BattleRoom] Boss gate physics opened at room boss_room (27, 8) size 1x2
+[BattleRoom] Boss gate opened! Kills: 8/8
+[BattleRoom] Monster killed: m_17 (bat)
+[BattleRoom] Monster killed: m_21 (bat)
+[BattleRoom] Monster killed: m_23 (boss_slime)
+[BattleRoom] ★ Boss killed! Triggering level transition...
+[BattleRoom] Boss defeated! Level 2/2
+[BattleRoom] sVg-OZWN9 left (consented: true), remaining: 0
+[BattleRoom] All players left, disposing room m6ENTJ4wk
+[BattleRoom] Room m6ENTJ4wk disposed
+[BattleRoom] Loaded 3 characters
+[BattleRoom] Loaded levels config
+[BattleRoom] Loaded formulas config
+[BattleRoom] Loaded difficulty config
+[BattleRoom] Room created: 2fkx-raIZ (max 4 players)
+[BattleRoom] IRGEkeJ9K joined as ranger (1/4)
+[BattleRoom] IRGEkeJ9K left (consented: true), remaining: 0
+[BattleRoom] All players left, disposing room 2fkx-raIZ
+[BattleRoom] Room 2fkx-raIZ disposed
+[BattleRoom] Loaded 3 characters
+[BattleRoom] Loaded levels config
+[BattleRoom] Loaded formulas config
+[BattleRoom] Loaded difficulty config
+[BattleRoom] Room created: NIgjxSL3K (max 4 players)
+[BattleRoom] hNXG_JHei joined as ranger (1/4)
+[BattleRoom] hNXG_JHei ready: true (1/1)
+[DifficultyScaler] Players: 1, multiplier: 1x
+[ServerPhysics] Map loaded: 28×10 tiles, tileSize=64
+[ServerSpawner] Loaded 9 spawn points, difficulty: 1x
+[BattleRoom] 🎮 Game started! 1 players, difficulty: 1x, tick: 20Hz
+[BattleRoom] hNXG_JHei ready: false (0/1)
+[BattleRoom] Monster killed: m_3 (bat)
+[BattleRoom] Monster killed: m_2 (slime)
+[BattleRoom] Monster killed: m_1 (slime)
+[BattleRoom] Boss gate physics opened at room boss_room (16, 4) size 1x2
+[BattleRoom] Boss gate opened! Kills: 3/3
+[BattleRoom] Monster killed: m_4 (slime)
+[BattleRoom] Monster killed: m_5 (bat)
+[BattleRoom] Monster killed: m_8 (bat)
+[BattleRoom] hNXG_JHei left (consented: false), remaining: 0
+[BattleRoom] All players left, disposing room NIgjxSL3K
+[BattleRoom] Room NIgjxSL3K disposed
+[BattleRoom] Loaded 3 characters
+[BattleRoom] Loaded levels config
+[BattleRoom] Loaded formulas config
+[BattleRoom] Loaded difficulty config
+[BattleRoom] Room created: 05VD6GX2b (max 4 players)
+[BattleRoom] mxrPehmVw joined as ranger (1/4)
+[BattleRoom] mxrPehmVw ready: true (1/1)
+[DifficultyScaler] Players: 1, multiplier: 1x
+[ServerPhysics] Map loaded: 28×10 tiles, tileSize=64
+[ServerSpawner] Loaded 9 spawn points, difficulty: 1x
+[BattleRoom] 🎮 Game started! 1 players, difficulty: 1x, tick: 20Hz
+[BattleRoom] mxrPehmVw ready: false (0/1)
+[BattleRoom] Monster killed: m_3 (bat)
+[BattleRoom] Monster killed: m_2 (slime)
+[BattleRoom] Monster killed: m_4 (slime)
+[BattleRoom] Boss gate physics opened at room boss_room (16, 4) size 1x2
+[BattleRoom] Boss gate opened! Kills: 3/3
+[BattleRoom] Monster killed: m_1 (slime)
+[BattleRoom] Monster killed: m_5 (bat)
+[BattleRoom] Monster killed: m_8 (bat)
+[BattleRoom] Monster killed: m_6 (slime)
+[BattleRoom] Monster killed: m_9 (boss_slime)
+[BattleRoom] ★ Boss killed! Triggering level transition...
+[BattleRoom] Boss defeated! Level 1/2
+[ServerPhysics] Map loaded: 41×15 tiles, tileSize=64
+[ServerSpawner] Loaded 14 spawn points, difficulty: 1x
+[BattleRoom] Loaded level 2: 毒雾沼泽
+[BattleRoom] Monster killed: m_10 (slime)
+[BattleRoom] Monster killed: m_11 (bat)
+[BattleRoom] Monster killed: m_14 (bat)
+[BattleRoom] Monster killed: m_15 (bat)
+[BattleRoom] Monster killed: m_18 (bat)
+[BattleRoom] Monster killed: m_16 (slime)
+[BattleRoom] Monster killed: m_13 (slime)
+[BattleRoom] Monster killed: m_12 (slime)
+[BattleRoom] Boss gate physics opened at room boss_room (27, 8) size 1x2
+[BattleRoom] Boss gate opened! Kills: 8/8
+[BattleRoom] Monster killed: m_17 (bat)
+[BattleRoom] Monster killed: m_21 (bat)
+[BattleRoom] Monster killed: m_20 (bat)
+[BattleRoom] Monster killed: m_22 (slime)
+[BattleRoom] Monster killed: m_19 (slime)
+[BattleRoom] Monster killed: m_23 (boss_slime)
+[BattleRoom] ★ Boss killed! Triggering level transition...
+[BattleRoom] Boss defeated! Level 2/2
+[BattleRoom] mxrPehmVw left (consented: true), remaining: 0
+[BattleRoom] All players left, disposing room 05VD6GX2b
+[BattleRoom] Room 05VD6GX2b disposed
+[BattleRoom] Loaded 3 characters
+[BattleRoom] Loaded levels config
+[BattleRoom] Loaded formulas config
+[BattleRoom] Loaded difficulty config
+[BattleRoom] Room created: JXCm7EOYb (max 4 players)
+[BattleRoom] XaOKwhPIE joined as ranger (1/4)
+[BattleRoom] XaOKwhPIE ready: true (1/1)
+[DifficultyScaler] Players: 1, multiplier: 1x
+[ServerPhysics] Map loaded: 28×10 tiles, tileSize=64
+[ServerSpawner] Loaded 9 spawn points, difficulty: 1x
+[BattleRoom] 🎮 Game started! 1 players, difficulty: 1x, tick: 20Hz
+[BattleRoom] XaOKwhPIE ready: false (0/1)
+[BattleRoom] Monster killed: m_3 (bat)
+[BattleRoom] Monster killed: m_2 (slime)
+[BattleRoom] Monster killed: m_1 (slime)
+[BattleRoom] Boss gate physics opened at room boss_room (16, 4) size 1x2
+[BattleRoom] Boss gate opened! Kills: 3/3
+[BattleRoom] Monster killed: m_4 (slime)
+[BattleRoom] Monster killed: m_5 (bat)
+[BattleRoom] Monster killed: m_8 (bat)
+[BattleRoom] Monster killed: m_7 (slime)
+[BattleRoom] Game Over — all players dead
+
+f:\AITestYCWJ\server>

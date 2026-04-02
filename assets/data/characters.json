@@ -1,0 +1,92 @@
+{
+    "ranger": {
+        "id": "ranger",
+        "name": "游侠-脉冲",
+        "icon": "🔫",
+        "description": "高攻速低防御的灵活射手，擅长快速输出",
+        "color": "#44CC44",
+        "shape": "circle",
+        "size": 48,
+        "stats": {
+            "maxHp": 80,
+            "attack": 10,
+            "defense": 1,
+            "critRate": 0.1,
+            "critMultiplier": 1.5,
+            "moveSpeed": 170,
+            "attackSpeed": 0.35,
+            "attackRange": 220,
+            "projectileSpeed": 450
+        },
+        "initialWeapon": "pistol",
+        "activeSkill": "overcharge",
+        "activeSkillConfig": {
+            "name": "超频弹幕",
+            "icon": "⚡",
+            "description": "3秒内攻速翻倍",
+            "cooldown": 12,
+            "duration": 3,
+            "attackSpeedBonus": 1.0
+        }
+    },
+    "vanguard": {
+        "id": "vanguard",
+        "name": "先锋-泰坦",
+        "icon": "🛡️",
+        "description": "高防高血量的前线坦克，能抗能打",
+        "color": "#4488FF",
+        "shape": "square",
+        "size": 52,
+        "stats": {
+            "maxHp": 150,
+            "attack": 8,
+            "defense": 5,
+            "critRate": 0.05,
+            "critMultiplier": 1.5,
+            "moveSpeed": 120,
+            "attackSpeed": 0.6,
+            "attackRange": 180,
+            "projectileSpeed": 350
+        },
+        "initialWeapon": "shotgun",
+        "activeSkill": "shield_bash",
+        "activeSkillConfig": {
+            "name": "能量护盾",
+            "icon": "🛡️",
+            "description": "3秒无敌+击退周围敌人",
+            "cooldown": 15,
+            "duration": 3,
+            "pushRange": 150,
+            "pushForce": 200
+        }
+    },
+    "medic": {
+        "id": "medic",
+        "name": "医疗-纳米",
+        "icon": "💊",
+        "description": "均衡属性的支援型角色，自带恢复能力",
+        "color": "#FF66AA",
+        "shape": "circle",
+        "size": 48,
+        "stats": {
+            "maxHp": 110,
+            "attack": 9,
+            "defense": 3,
+            "critRate": 0.08,
+            "critMultiplier": 1.5,
+            "moveSpeed": 150,
+            "attackSpeed": 0.45,
+            "attackRange": 200,
+            "projectileSpeed": 400
+        },
+        "initialWeapon": "machineGun",
+        "activeSkill": "nano_heal",
+        "activeSkillConfig": {
+            "name": "纳米修复",
+            "icon": "💚",
+            "description": "立即恢复30%最大生命值",
+            "cooldown": 10,
+            "healPercent": 0.3
+        }
+    }
+}

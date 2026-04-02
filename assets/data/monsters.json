@@ -1,0 +1,44 @@
+{
+    "slime": {
+        "name": "史莱姆",
+        "maxHp": 30,
+        "attack": 5,
+        "defense": 0,
+        "moveSpeed": 60,
+        "detectionRange": 300,
+        "attackRange": 50,
+        "attackCooldown": 1.0,
+        "expValue": 10,
+        "color": "#44CC44",
+        "size": 44,
+        "shape": "circle"
+    },
+    "bat": {
+        "name": "蝙蝠",
+        "maxHp": 15,
+        "attack": 8,
+        "defense": 0,
+        "moveSpeed": 100,
+        "detectionRange": 350,
+        "attackRange": 45,
+        "attackCooldown": 0.8,
+        "expValue": 15,
+        "color": "#8844AA",
+        "size": 36,
+        "shape": "triangle"
+    },
+    "boss_slime": {
+        "name": "巨型史莱姆",
+        "maxHp": 150,
+        "attack": 12,
+        "defense": 3,
+        "moveSpeed": 40,
+        "detectionRange": 400,
+        "attackRange": 100,
+        "attackCooldown": 1.5,
+        "expValue": 100,
+        "color": "#FF4444",
+        "size": 80,
+        "shape": "circle"
+    }
+}

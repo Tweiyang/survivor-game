@@ -1,0 +1,8 @@
+{
+    "defenseRatio": 0.5,
+    "baseCritMultiplier": 1.5,
+    "levelScaling": 1.1,
+    "expPerBall": 5,
+    "baseExpToLevel": 50,
+    "expLevelMultiplier": 1.3
+}

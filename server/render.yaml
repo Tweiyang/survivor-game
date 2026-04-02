@@ -1,0 +1,18 @@
+# Render Blueprint — Colyseus Game Server
+# https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: survivor-game-server
+    runtime: node
+    region: singapore  # 亚洲节点
+    plan: free
+    rootDir: server
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 2567

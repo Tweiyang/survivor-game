@@ -1,0 +1,11 @@
+{
+    "scalingFormula": "linear",
+    "baseMultiplier": 1.0,
+    "perPlayerAdd": 0.5,
+    "fields": {
+        "monsterHp": true,
+        "monsterCount": true,
+        "monsterDamage": false,
+        "bossHp": true
+    }
+}

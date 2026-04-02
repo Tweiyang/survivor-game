@@ -1,0 +1,129 @@
+{
+    "sfx": {
+        "player_shoot": {
+            "type": "synth",
+            "wave": "square",
+            "freq": [880, 220],
+            "duration": 0.08,
+            "gain": 0.15
+        },
+        "player_hit": {
+            "type": "synth",
+            "wave": "sawtooth",
+            "freq": [200, 80],
+            "duration": 0.15,
+            "gain": 0.2,
+            "filter": { "type": "lowpass", "frequency": 800, "Q": 2 }
+        },
+        "enemy_hit": {
+            "type": "synth",
+            "wave": "square",
+            "freq": [300, 150],
+            "duration": 0.08,
+            "gain": 0.12
+        },
+        "enemy_kill": {
+            "type": "synth",
+            "wave": "sawtooth",
+            "freq": [400, 60],
+            "duration": 0.25,
+            "gain": 0.18,
+            "filter": { "type": "lowpass", "frequency": 1200, "Q": 1 }
+        },
+        "boss_kill": {
+            "type": "synth",
+            "wave": "sawtooth",
+            "freq": [120, 30],
+            "duration": 0.6,
+            "gain": 0.3,
+            "filter": { "type": "lowpass", "frequency": 600, "Q": 3 }
+        },
+        "exp_pickup": {
+            "type": "synth",
+            "wave": "sine",
+            "freq": [600, 900],
+            "duration": 0.08,
+            "gain": 0.1
+        },
+        "level_up": {
+            "type": "synth",
+            "wave": "square",
+            "freq": [440, 880],
+            "duration": 0.3,
+            "gain": 0.2
+        },
+        "gate_open": {
+            "type": "synth",
+            "wave": "sawtooth",
+            "freq": [80, 200],
+            "duration": 0.5,
+            "gain": 0.25,
+            "filter": { "type": "lowpass", "frequency": 500, "Q": 2 }
+        },
+        "level_complete": {
+            "type": "synth",
+            "wave": "square",
+            "freq": [523, 1047],
+            "duration": 0.5,
+            "gain": 0.2
+        },
+        "skill_select": {
+            "type": "synth",
+            "wave": "sine",
+            "freq": [660, 880],
+            "duration": 0.12,
+            "gain": 0.15
+        },
+        "active_skill": {
+            "type": "synth",
+            "wave": "sawtooth",
+            "freq": [220, 660],
+            "duration": 0.2,
+            "gain": 0.2,
+            "filter": { "type": "highpass", "frequency": 300, "Q": 1 }
+        }
+    },
+    "bgm": {
+        "bgm_title": {
+            "type": "synth_loop",
+            "bpm": 90,
+            "tracks": [
+                {
+                    "wave": "triangle",
+                    "gain": 0.12,
+                    "notes": [
+                        "C4","E4","G4","E4","A4","G4","E4","C4",
+                        "D4","F4","A4","F4","G4","F4","D4","C4"
+                    ]
+                }
+            ]
+        },
+        "bgm_battle": {
+            "type": "synth_loop",
+            "bpm": 140,
+            "tracks": [
+                {
+                    "wave": "square",
+                    "gain": 0.08,
+                    "notes": [
+                        "E3","E3","_","E3","_","C3","E3","G3",
+                        "_","G2","_","_","C3","_","_","G2",
+                        "_","_","E2","_","_","A2","_","B2",
+                        "_","A#2","A2","_","G2","E3","G3","A3",
+                        "_","F3","G3","_","E3","_","C3","D3","B2","_","_","_"
+                    ]
+                },
+                {
+                    "wave": "triangle",
+                    "gain": 0.06,
+                    "notes": [
+                        "C2","_","_","C2","_","_","G2","_",
+                        "C2","_","_","C2","_","_","G2","_",
+                        "A1","_","_","A1","_","_","E2","_",
+                        "A1","_","_","A1","_","_","E2","_"
+                    ]
+                }
+            ]
+        }
+    }
+}

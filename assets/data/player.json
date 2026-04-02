@@ -1,0 +1,12 @@
+{
+    "maxHp": 100,
+    "attack": 10,
+    "defense": 2,
+    "critRate": 0.05,
+    "critMultiplier": 1.5,
+    "moveSpeed": 150,
+    "attackSpeed": 1.5,
+    "attackRange": 300,
+    "projectileSpeed": 400,
+    "pickupRange": 120
+}
