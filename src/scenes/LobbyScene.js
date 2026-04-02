@@ -607,10 +607,8 @@ export class LobbyScene extends Scene {
             // 自动刷新
             this._startAutoRefresh();
         } catch (err) {
-            const isTimeout = err.message?.includes('Timeout') || err.message?.includes('timeout');
-            this._error = isTimeout
-                ? '⚠ 服务器不可用，请稍后重试或选择单人游戏'
-                : `获取房间列表失败: ${err.message}`;
+            console.warn('[LobbyScene] Room list fetch failed:', err.message);
+            this._error = '⚠ 服务器不可用，请稍后重试或选择单人游戏';
             this._connecting = false;
             this._autoClearError();
         }
