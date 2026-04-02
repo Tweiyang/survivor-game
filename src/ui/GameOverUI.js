@@ -1,4 +1,5 @@
 import { AudioManager } from '../systems/AudioManager.js';
+import { addClickOrTouch } from '../utils/addClickOrTouch.js';
 
 /**
  * GameOverUI — 死亡结算界面
@@ -62,9 +63,9 @@ export class GameOverUI {
             audioMgr.stopBGM(1.0);
         }
 
-        // 绑定点击事件
+        // 绑定点击事件（兼容触屏）
         if (this.canvas) {
-            this.canvas.addEventListener('click', this._onClick);
+            this._cleanupClick = addClickOrTouch(this.canvas, (pos) => this._onClick(pos));
         }
 
         // 立即绘制一次
@@ -72,12 +73,11 @@ export class GameOverUI {
     }
 
     /** @private 点击回调 */
-    _onClick(e) {
+    _onClick(pos) {
         if (!this.isShowing) return;
 
-        const rect = this.canvas.getBoundingClientRect();
-        const mx = e.clientX - rect.left;
-        const my = e.clientY - rect.top;
+        const mx = pos.x;
+        const my = pos.y;
 
         const btn = this._btnRect;
         if (mx >= btn.x && mx <= btn.x + btn.w &&

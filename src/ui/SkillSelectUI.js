@@ -1,4 +1,6 @@
 import { SkillComponent } from '../components/SkillComponent.js';
+import { SkillDatabase } from '../skills/SkillDatabase.js';
+import { addClickOrTouch } from '../utils/addClickOrTouch.js';
 
 /**
  * SkillSelectUI — 升级技能三选一弹窗
@@ -66,9 +68,9 @@ export class SkillSelectUI {
             this.gameLoop.pause();
         }
 
-        // 绑定点击
+        // 绑定点击（兼容触屏）
         if (this.canvas) {
-            this.canvas.addEventListener('click', this._onClick);
+            this._cleanupClick = addClickOrTouch(this.canvas, (pos) => this._onClick(pos));
         }
 
         // 渲染一帧
@@ -76,12 +78,11 @@ export class SkillSelectUI {
     }
 
     /** @private */
-    _onClick(e) {
+    _onClick(pos) {
         if (!this.isShowing) return;
 
-        const rect = this.canvas.getBoundingClientRect();
-        const mx = e.clientX - rect.left;
-        const my = e.clientY - rect.top;
+        const mx = pos.x;
+        const my = pos.y;
 
         for (let i = 0; i < this._cardRects.length; i++) {
             const card = this._cardRects[i];

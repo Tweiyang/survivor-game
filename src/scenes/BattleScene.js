@@ -16,6 +16,7 @@ import { SkillComponent } from '../components/SkillComponent.js';
 import { AudioManager } from '../systems/AudioManager.js';
 import { BGMController } from '../systems/BGMController.js';
 import { NetworkManager } from '../systems/NetworkManager.js';
+import { addClickOrTouch } from '../utils/addClickOrTouch.js';
 import { PredictionSystem } from '../systems/PredictionSystem.js';
 import { InterpolationSystem } from '../systems/InterpolationSystem.js';
 import { StateSynchronizer } from '../systems/StateSynchronizer.js';
@@ -841,9 +842,8 @@ export class BattleScene extends Scene {
         ctx.restore();
 
         // 注册点击（只注册一次）
-        if (!this._pauseMenuOnClick) {
-            this._pauseMenuOnClick = (e) => this._handlePauseMenuClick(e);
-            this.systems.canvas.addEventListener('click', this._pauseMenuOnClick);
+        if (!this._pauseMenuCleanup) {
+            this._pauseMenuCleanup = addClickOrTouch(this.systems.canvas, (pos) => this._handlePauseMenuClick(pos));
         }
     }
 
@@ -912,13 +912,12 @@ export class BattleScene extends Scene {
      * P4: 处理暂停菜单点击
      * @private
      */
-    _handlePauseMenuClick(e) {
+    _handlePauseMenuClick(pos) {
         if (!this.systems.gameLoop || !this.systems.gameLoop.isPaused) return;
         if (this.keybindSettingsUI && this.keybindSettingsUI.isOpen) return;
 
-        const rect = this.systems.canvas.getBoundingClientRect();
-        const mx = e.clientX - rect.left;
-        const my = e.clientY - rect.top;
+        const mx = pos.x;
+        const my = pos.y;
 
         // 检查音量滑块点击
         if (this._volumeSliderRects) {

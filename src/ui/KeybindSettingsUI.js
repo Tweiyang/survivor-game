@@ -4,6 +4,8 @@
  *
  * 在 Canvas 上渲染键位设置弹窗，支持重绑定和恢复默认。
  */
+import { addClickOrTouch } from '../utils/addClickOrTouch.js';
+
 export class KeybindSettingsUI {
     /**
      * @param {object} config
@@ -40,10 +42,9 @@ export class KeybindSettingsUI {
         this.isOpen = true;
         this._listeningAction = null;
 
-        // 注册点击监听
-        if (this.canvas && !this._onClick) {
-            this._onClick = (e) => this._handleClick(e);
-            this.canvas.addEventListener('click', this._onClick);
+        // 注册点击监听（兼容触屏）
+        if (this.canvas && !this._cleanupClick) {
+            this._cleanupClick = addClickOrTouch(this.canvas, (pos) => this._handleClick(pos));
         }
     }
 
@@ -177,12 +178,11 @@ export class KeybindSettingsUI {
     /**
      * @private
      */
-    _handleClick(e) {
+    _handleClick(pos) {
         if (!this.isOpen) return;
 
-        const rect = this.canvas.getBoundingClientRect();
-        const mx = e.clientX - rect.left;
-        const my = e.clientY - rect.top;
+        const mx = pos.x;
+        const my = pos.y;
 
         // 如果正在监听模式，点击其他地方取消
         if (this._listeningAction) {

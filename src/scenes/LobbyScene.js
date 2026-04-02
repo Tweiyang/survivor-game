@@ -12,6 +12,7 @@
 
 import { Scene } from '../core/Scene.js';
 import { NetworkManager } from '../systems/NetworkManager.js';
+import { addClickOrTouch } from '../utils/addClickOrTouch.js';
 import { AudioManager } from '../systems/AudioManager.js';
 
 /** UI 状态枚举 */
@@ -125,11 +126,10 @@ export class LobbyScene extends Scene {
         this.systems.eventSystem.on('onNetError', this._boundOnNetError);
         this.systems.eventSystem.on('onNetDisconnected', this._boundOnDisconnected);
 
-        // 绑定点击事件
+        // 绑定点击事件（兼容触屏）
         const canvas = this.systems.canvas;
         if (canvas) {
-            this._onClick = (e) => this._handleClick(e);
-            canvas.addEventListener('click', this._onClick);
+            this._cleanupClick = addClickOrTouch(canvas, (pos) => this._handleClick(pos));
         }
 
         this._view = VIEW.MAIN;
@@ -484,11 +484,9 @@ export class LobbyScene extends Scene {
     // 点击处理
     // ============================================================
 
-    _handleClick(e) {
-        const canvas = this.systems.canvas;
-        const rect = canvas.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+    _handleClick(pos) {
+        const x = pos.x;
+        const y = pos.y;
 
         for (const area of this._clickAreas) {
             if (x >= area.x && x <= area.x + area.w &&
@@ -869,7 +867,10 @@ export class LobbyScene extends Scene {
     destroy() {
         const canvas = this.systems.canvas;
         if (canvas && this._onClick) {
-            canvas.removeEventListener('click', this._onClick);
+            if (this._cleanupClick) {
+                this._cleanupClick();
+                this._cleanupClick = null;
+            }
         }
         this._onClick = null;
         this._stopAutoRefresh();

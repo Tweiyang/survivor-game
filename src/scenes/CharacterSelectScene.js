@@ -1,6 +1,7 @@
 import { Scene } from '../core/Scene.js';
 import { AudioManager } from '../systems/AudioManager.js';
 import { BGMController } from '../systems/BGMController.js';
+import { addClickOrTouch } from '../utils/addClickOrTouch.js';
 
 const DATA_BASE_PATH = './assets/data';
 
@@ -45,11 +46,10 @@ export class CharacterSelectScene extends Scene {
         this.selectedIndex = 0;
         this._loaded = true;
 
-        // 绑定点击事件
+        // 绑定点击事件（兼容触屏）
         const canvas = this.systems.canvas;
         if (canvas) {
-            this._onClick = (e) => this._handleClick(e);
-            canvas.addEventListener('click', this._onClick);
+            this._cleanupClick = addClickOrTouch(canvas, (pos) => this._handleClick(pos));
         }
 
         console.log(`[CharacterSelectScene] Loaded ${this.characterIds.length} characters`);
@@ -268,13 +268,12 @@ export class CharacterSelectScene extends Scene {
      * 处理点击事件
      * @private
      */
-    _handleClick(e) {
+    _handleClick(pos) {
         const canvas = this.systems.canvas;
         if (!canvas) return;
 
-        const rect = canvas.getBoundingClientRect();
-        const mx = e.clientX - rect.left;
-        const my = e.clientY - rect.top;
+        const mx = pos.x;
+        const my = pos.y;
 
         // 检查角色卡片点击
         for (let i = 0; i < this._cardRects.length; i++) {
@@ -320,11 +319,10 @@ export class CharacterSelectScene extends Scene {
     }
 
     destroy() {
-        const canvas = this.systems.canvas;
-        if (canvas && this._onClick) {
-            canvas.removeEventListener('click', this._onClick);
+        if (this._cleanupClick) {
+            this._cleanupClick();
+            this._cleanupClick = null;
         }
-        this._onClick = null;
         console.log('[CharacterSelectScene] Destroyed');
     }
 }

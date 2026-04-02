@@ -1,3 +1,5 @@
+import { addClickOrTouch } from '../utils/addClickOrTouch.js';
+
 /**
  * LevelCompleteUI — 关卡通关覆盖层
  * Unity equivalent: Level Complete Panel UI
@@ -35,10 +37,9 @@ export class LevelCompleteUI {
             this.gameLoop.pause();
         }
 
-        // 注册点击
-        if (this.canvas && !this._onClick) {
-            this._onClick = (e) => this._handleClick(e);
-            this.canvas.addEventListener('click', this._onClick);
+        // 注册点击（兼容触屏）
+        if (this.canvas && !this._cleanupClick) {
+            this._cleanupClick = addClickOrTouch(this.canvas, (pos) => this._handleClick(pos));
         }
     }
 
@@ -139,12 +140,11 @@ export class LevelCompleteUI {
     }
 
     /** @private */
-    async _handleClick(e) {
+    async _handleClick(pos) {
         if (!this.isShowing) return;
 
-        const rect = this.canvas.getBoundingClientRect();
-        const mx = e.clientX - rect.left;
-        const my = e.clientY - rect.top;
+        const mx = pos.x;
+        const my = pos.y;
 
         for (const btn of this._btnRects) {
             if (mx >= btn.x && mx <= btn.x + btn.w && my >= btn.y && my <= btn.y + btn.h) {
