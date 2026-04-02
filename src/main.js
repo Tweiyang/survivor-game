@@ -157,8 +157,13 @@ gameLoop.onDebugRender = (ctx, deltaTime) => {
     ctx.fillText(`Paused: ${gameLoop.isPaused}  Input: ${inputManager.getCurrentDeviceType()}`, debugX + 8, 88);
     ctx.restore();
 
-    // P4: 渲染触屏虚拟控件（仅 touch 模式生效，keyboard 为空操作）
+    // P4: 渲染触屏虚拟控件（摇杆/按钮，仅 touch 模式生效）
     inputManager.render(ctx);
+
+    // 触屏 canvas 尺寸适配
+    if (inputManager.getCurrentDeviceType() === 'touch' && inputManager._provider && inputManager._provider.updateLayout) {
+        inputManager._provider.updateLayout(canvas.width, canvas.height);
+    }
 };
 
 // ============================================================
