@@ -996,4 +996,45 @@ damageEvent/sfxEvent 消息            →    ClientRpc / ServerRpc
 
 ---
 
-*最后更新：2026-04-02（P7 Web 部署规范）*
+---
+
+## 10. Unity 移植规范（Phase U）
+
+### 10.1 总体原则
+
+- Unity 代码全部生成在 `Unity/` 文件夹下，不影响现有 Web 版
+- 服务端代码（`server/`）完全不动，Unity 客户端复用 Colyseus Node.js 后端
+- 使用 Unity 2022 LTS，C# 10
+- 联网方案：**colyseus-unity SDK**（NuGet: `com.colyseus.sdk`）
+
+### 10.2 架构映射
+
+| Web JS | Unity C# |
+|--------|----------|
+| Entity + Component | GameObject + MonoBehaviour |
+| JSON 配置 | ScriptableObject |
+| EntityFactory | Prefab + Factory 脚本 |
+| EventSystem | C# `event Action<T>` + EventBus 单例 |
+| SceneManager | `UnityEngine.SceneManagement` |
+| Canvas 2D | SpriteRenderer + Tilemap |
+| PhysicsSystem | Unity Physics2D |
+| InputManager | Unity Input System (New) |
+| AudioManager | AudioSource + AudioMixer |
+| Colyseus JS SDK | colyseus-unity C# SDK |
+
+### 10.3 命名规范（C#）
+
+| 元素 | 规范 | 示例 |
+|------|------|------|
+| 类名 | PascalCase | `PlayerController` |
+| 方法名 | PascalCase | `TakeDamage()` |
+| 私有字段 | _camelCase | `_currentHp` |
+| 序列化字段 | `[SerializeField]` + _camelCase | `[SerializeField] float _moveSpeed` |
+| 常量 | PascalCase | `MaxHealth` |
+| 接口 | I前缀 | `IDamageable` |
+
+### 10.4 文件夹结构
+
+所有 Unity 代码位于 `Unity/Assets/` 下，详见 Phase 1 生成。
+
+*最后更新：2026-04-03（Section 10 Unity 移植规范）*
