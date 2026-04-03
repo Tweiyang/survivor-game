@@ -393,6 +393,7 @@ export class NetworkManager {
         }
         this.mode = 'offline';
         this.isConnected = false;
+        this._client = null;            // ★ 清空残留的 Client 实例
         console.log('[NetworkManager] Mode → offline');
     }
 

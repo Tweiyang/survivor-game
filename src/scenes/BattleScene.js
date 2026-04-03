@@ -117,9 +117,9 @@ export class BattleScene extends Scene {
         });
 
         // 4. 初始化经验系统
-        // [Network] 联网模式下不注册本地 onPickup 监听（经验由服务端权威管理）
+        // [Network] 联机模式下不注册本地 onPickup 监听（经验由服务端权威管理）
         this.experienceSystem = new ExperienceSystem({
-            eventSystem: this._data?.isOnline ? null : eventSystem,
+            eventSystem: isOnline ? null : eventSystem,  // ★ 修复：使用局部 isOnline（原 this._data 不存在）
             formulas: this.formulasConfig
         });
 

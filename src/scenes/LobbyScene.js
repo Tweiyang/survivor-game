@@ -581,6 +581,8 @@ export class LobbyScene extends Scene {
 
             // createRoom 成功后 _onRoomJoined 会切到等待室
         } catch (err) {
+            // ★ 连接失败后恢复 offline 模式，避免污染后续单机游戏
+            NetworkManager.getInstance().setOfflineMode();
             const isTimeout = err.message?.includes('Timeout') || err.message?.includes('timeout');
             this._error = isTimeout
                 ? '⚠ 服务器不可用，请稍后重试或选择单人游戏'
@@ -608,6 +610,8 @@ export class LobbyScene extends Scene {
             this._startAutoRefresh();
         } catch (err) {
             console.warn('[LobbyScene] Room list fetch failed:', err.message);
+            // ★ 连接失败后恢复 offline 模式，避免污染后续单机游戏
+            NetworkManager.getInstance().setOfflineMode();
             this._error = '⚠ 服务器不可用，请稍后重试或选择单人游戏';
             this._connecting = false;
             this._autoClearError();

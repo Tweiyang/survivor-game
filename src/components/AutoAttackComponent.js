@@ -75,8 +75,12 @@ export class AutoAttackComponent extends Component {
         if (!this.entityManager) return null;
 
         const pos = this.entity.transform.position;
-        const enemyTag = combat.faction === 'player' ? 'enemy' : 'player';
-        const enemies = this.entityManager.findAllByTag(enemyTag);
+        // ★ 玩家子弹同时搜索 enemy + boss；敌方子弹搜索 player
+        const enemyTags = combat.faction === 'player' ? ['enemy', 'boss'] : ['player'];
+        let enemies = [];
+        for (const tag of enemyTags) {
+            enemies = enemies.concat(this.entityManager.findAllByTag(tag));
+        }
 
         let nearest = null;
         let nearestDist = combat.attackRange;
