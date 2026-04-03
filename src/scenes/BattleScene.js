@@ -23,6 +23,8 @@ import { StateSynchronizer } from '../systems/StateSynchronizer.js';
 
 // 数据配置 — 通过 fetch 加载（浏览器原生 ES Module 不支持 import JSON）
 const DATA_BASE_PATH = './assets/data';
+/** 生成带缓存破坏参数的 URL，避免浏览器缓存旧文件 */
+const nocache = (url) => `${url}?v=${Date.now()}`;
 
 /**
  * BattleScene — 战斗主场景
@@ -461,9 +463,9 @@ export class BattleScene extends Scene {
     async _loadConfigs() {
         try {
             const [playerRes, monstersRes, formulasRes] = await Promise.all([
-                fetch(`${DATA_BASE_PATH}/player.json`),
-                fetch(`${DATA_BASE_PATH}/monsters.json`),
-                fetch(`${DATA_BASE_PATH}/formulas.json`)
+                fetch(nocache(`${DATA_BASE_PATH}/player.json`)),
+                fetch(nocache(`${DATA_BASE_PATH}/monsters.json`)),
+                fetch(nocache(`${DATA_BASE_PATH}/formulas.json`))
             ]);
             this.playerConfig = await playerRes.json();
             this.monstersConfig = await monstersRes.json();
@@ -491,7 +493,7 @@ export class BattleScene extends Scene {
      */
     async _loadSkillsConfig() {
         try {
-            const res = await fetch(`${DATA_BASE_PATH}/skills.json`);
+            const res = await fetch(nocache(`${DATA_BASE_PATH}/skills.json`));
             this.skillsConfig = await res.json();
         } catch (e) {
             console.error('[BattleScene] Failed to load skills.json:', e);
@@ -505,7 +507,7 @@ export class BattleScene extends Scene {
      */
     async _loadCharactersConfig() {
         try {
-            const res = await fetch(`${DATA_BASE_PATH}/characters.json`);
+            const res = await fetch(nocache(`${DATA_BASE_PATH}/characters.json`));
             this.charactersConfig = await res.json();
         } catch (e) {
             console.error('[BattleScene] Failed to load characters.json:', e);

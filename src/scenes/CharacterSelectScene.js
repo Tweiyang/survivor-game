@@ -36,7 +36,7 @@ export class CharacterSelectScene extends Scene {
 
     async init() {
         try {
-            const res = await fetch(`${DATA_BASE_PATH}/characters.json`);
+            const res = await fetch(`${DATA_BASE_PATH}/characters.json?v=${Date.now()}`);
             this.characters = await res.json();
         } catch (e) {
             console.error('[CharacterSelectScene] Failed to load characters.json:', e);
