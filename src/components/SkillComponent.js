@@ -39,6 +39,54 @@ export class SkillComponent extends Component {
         this._modifierDirty = true;
     }
 
+    // ==================== 序列化 / 反序列化（跨关卡保留） ====================
+
+    /**
+     * 将当前技能状态序列化为可 JSON 存储的快照
+     * @returns {{ weapons: Array<{id:string, level:number}>, passives: Array<{id:string, level:number}> }}
+     */
+    serialize() {
+        return {
+            weapons: this.weapons.map(w => ({ id: w.weaponId, level: w.level })),
+            passives: this.passives.map(p => ({ id: p.skillId, level: p.level }))
+        };
+    }
+
+    /**
+     * 从快照恢复技能状态（跨关卡时调用）
+     * @param {{ weapons: Array<{id:string, level:number}>, passives: Array<{id:string, level:number}> }} snapshot
+     */
+    deserialize(snapshot) {
+        if (!snapshot) return;
+
+        // 恢复武器
+        if (Array.isArray(snapshot.weapons)) {
+            for (const w of snapshot.weapons) {
+                const cfg = this.skillPool[w.id];
+                if (!cfg) continue;
+                const weapon = new WeaponSkill(cfg, this.systems);
+                weapon.entity = this.entity;
+                // 升级到存档等级
+                for (let i = 1; i < w.level; i++) weapon.levelUp();
+                this.weapons.push(weapon);
+            }
+        }
+
+        // 恢复被动
+        if (Array.isArray(snapshot.passives)) {
+            for (const p of snapshot.passives) {
+                const cfg = this.skillPool[p.id];
+                if (!cfg) continue;
+                const passive = new PassiveEffect(cfg);
+                for (let i = 1; i < p.level; i++) passive.levelUp();
+                this.passives.push(passive);
+            }
+        }
+
+        this._modifierDirty = true;
+        console.log(`[SkillComponent] Restored ${this.weapons.length} weapons + ${this.passives.length} passives from snapshot`);
+    }
+
     /**
      * 每帧更新所有武器的开火逻辑
      * @param {number} deltaTime

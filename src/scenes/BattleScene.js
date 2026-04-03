@@ -168,6 +168,26 @@ export class BattleScene extends Scene {
         camera.setTarget(this.player);
         camera.snapToTarget();
 
+        // ★ 6b. 跨关卡恢复：从 sceneData 恢复技能 & 经验快照
+        if (sceneData.skillSnapshot) {
+            const playerSkill = this.player.getComponent(SkillComponent);
+            if (playerSkill) {
+                // 清掉 PlayerFactory 默认添加的初始武器，用快照覆盖
+                playerSkill.weapons = [];
+                playerSkill.passives = [];
+                playerSkill.deserialize(sceneData.skillSnapshot);
+            }
+            delete sceneData.skillSnapshot;  // 用完清除，防止重复恢复
+        }
+        if (sceneData.expSnapshot) {
+            this.experienceSystem.level = sceneData.expSnapshot.level;
+            this.experienceSystem.currentExp = sceneData.expSnapshot.currentExp;
+            this.experienceSystem.expToNextLevel = this.experienceSystem._calcExpToLevel(sceneData.expSnapshot.level);
+            this.experienceSystem.killCount = sceneData.expSnapshot.killCount || 0;
+            console.log(`[BattleScene] Restored exp: Lv.${this.experienceSystem.level} (${this.experienceSystem.currentExp}/${this.experienceSystem.expToNextLevel})`);
+            delete sceneData.expSnapshot;
+        }
+
         // 7. 初始化 HUD
         this.hud = new HUD({
             ctx,
@@ -305,6 +325,16 @@ export class BattleScene extends Scene {
                 this.audioManager.stopBGM(1.0);
             }
             if (this.levelCompleteUI) {
+                // ★ 注入技能 & 经验快照，供下一关恢复
+                const playerSkill = this.player?.getComponent(SkillComponent);
+                if (playerSkill) {
+                    data.skillSnapshot = playerSkill.serialize();
+                }
+                data.expSnapshot = {
+                    level: this.experienceSystem.level,
+                    currentExp: this.experienceSystem.currentExp,
+                    killCount: this.experienceSystem.killCount
+                };
                 this.levelCompleteUI.show(data);
             }
         };

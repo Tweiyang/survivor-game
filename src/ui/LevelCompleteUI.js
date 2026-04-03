@@ -150,6 +150,13 @@ export class LevelCompleteUI {
             if (mx >= btn.x && mx <= btn.x + btn.w && my >= btn.y && my <= btn.y + btn.h) {
                 if (btn.action === 'next' && this.sceneManager) {
                     this.sceneManager.sceneData.levelId = this._data.nextLevelId;
+                    // ★ 保存技能 & 经验快照，供下一关恢复
+                    if (this._data.skillSnapshot) {
+                        this.sceneManager.sceneData.skillSnapshot = this._data.skillSnapshot;
+                    }
+                    if (this._data.expSnapshot) {
+                        this.sceneManager.sceneData.expSnapshot = this._data.expSnapshot;
+                    }
                     this.isShowing = false;
                     if (this.gameLoop) this.gameLoop.resume();
                     this.sceneManager.loadScene('battle');
