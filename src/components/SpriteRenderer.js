@@ -110,6 +110,9 @@ export class SpriteRenderer extends Component {
                 case 'triangle':
                     this._drawTriangle(ctx);
                     break;
+                case 'diamond':
+                    this._drawDiamond(ctx);
+                    break;
                 default:
                     this._drawRect(ctx);
             }
@@ -156,6 +159,26 @@ export class SpriteRenderer extends Component {
         ctx.moveTo(0, -halfH);           // 顶点
         ctx.lineTo(-halfW, halfH);       // 左下
         ctx.lineTo(halfW, halfH);        // 右下
+        ctx.closePath();
+        ctx.fill();
+
+        if (this.strokeColor && this.strokeWidth > 0) {
+            ctx.strokeStyle = this.strokeColor;
+            ctx.lineWidth = this.strokeWidth;
+            ctx.stroke();
+        }
+    }
+
+    /** @private 绘制菱形 */
+    _drawDiamond(ctx) {
+        const halfW = this.width / 2;
+        const halfH = this.height / 2;
+
+        ctx.beginPath();
+        ctx.moveTo(0, -halfH);           // 上
+        ctx.lineTo(halfW, 0);            // 右
+        ctx.lineTo(0, halfH);            // 下
+        ctx.lineTo(-halfW, 0);           // 左
         ctx.closePath();
         ctx.fill();
 

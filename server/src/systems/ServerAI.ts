@@ -13,8 +13,10 @@ import { ServerPhysics } from './ServerPhysics';
 const MONSTER_SPEEDS: Record<string, number> = {
     slime: 60,
     bat: 90,
-    skeleton: 50,
+    skeleton: 70,
+    ghost: 90,
     boss_slime: 45,
+    boss_skeleton: 50,
     boss_golem: 40,
 };
 
@@ -23,7 +25,9 @@ const MONSTER_RADII: Record<string, number> = {
     slime: 16,
     bat: 12,
     skeleton: 18,
+    ghost: 14,
     boss_slime: 28,
+    boss_skeleton: 32,
     boss_golem: 32,
 };
 
@@ -31,8 +35,10 @@ const MONSTER_RADII: Record<string, number> = {
 const MONSTER_DAMAGE: Record<string, number> = {
     slime: 5,
     bat: 3,
-    skeleton: 8,
+    skeleton: 10,
+    ghost: 14,
     boss_slime: 12,
+    boss_skeleton: 18,
     boss_golem: 15,
 };
 

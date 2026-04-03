@@ -310,12 +310,15 @@ export class ServerCombat {
     }
 
     /**
-     * 生成经验球掉落物（与单人模式一致：每球 expPerBall=5，总量=expValue）
-     * 单人模式: MonsterFactory 设 entity._expValue=10 → 生成 2 个球(各 5 exp)
-     * 服务端: 固定 expValue=10 → 生成 2 个球(各 5 exp)
+     * 生成经验球掉落物（根据怪物类型查表获取经验值）
      */
+    private static readonly EXP_TABLE: Record<string, number> = {
+        slime: 10, bat: 15, skeleton: 20, ghost: 25,
+        boss_slime: 100, boss_skeleton: 200, boss_golem: 200,
+    };
     private _spawnDrop(x: number, y: number, _monster?: MonsterState) {
-        const expValue = 10;                                     // 与 monsters.json 的 expValue 对齐
+        const monsterType = _monster?.monsterType || 'slime';
+        const expValue = ServerCombat.EXP_TABLE[monsterType] || 10;
         const expPerBall = (this.formulas as any).expPerBall || 5;
         let count = Math.ceil(expValue / expPerBall);
         count = Math.min(count, 5);                              // 上限 5 个

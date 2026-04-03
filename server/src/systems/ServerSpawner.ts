@@ -19,11 +19,13 @@ interface SpawnPoint {
 
 /** 怪物基础属性 */
 const MONSTER_STATS: Record<string, { hp: number; speed: number; damage: number; radius: number }> = {
-    slime:       { hp: 30,  speed: 60,  damage: 5,  radius: 16 },
-    bat:         { hp: 20,  speed: 90,  damage: 3,  radius: 12 },
-    skeleton:    { hp: 50,  speed: 50,  damage: 8,  radius: 18 },
-    boss_slime:  { hp: 150, speed: 45,  damage: 12, radius: 28 },
-    boss_golem:  { hp: 300, speed: 40,  damage: 15, radius: 32 },
+    slime:          { hp: 30,  speed: 60,  damage: 5,  radius: 16 },
+    bat:            { hp: 20,  speed: 90,  damage: 3,  radius: 12 },
+    skeleton:       { hp: 45,  speed: 70,  damage: 10, radius: 18 },
+    ghost:          { hp: 25,  speed: 90,  damage: 14, radius: 14 },
+    boss_slime:     { hp: 150, speed: 45,  damage: 12, radius: 28 },
+    boss_skeleton:  { hp: 300, speed: 50,  damage: 18, radius: 32 },
+    boss_golem:     { hp: 300, speed: 40,  damage: 15, radius: 32 },
 };
 
 export class ServerSpawner {

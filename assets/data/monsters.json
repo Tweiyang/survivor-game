@@ -40,5 +40,47 @@
         "color": "#FF4444",
         "size": 80,
         "shape": "circle"
+    },
+    "skeleton": {
+        "name": "骷髅兵",
+        "maxHp": 45,
+        "attack": 10,
+        "defense": 2,
+        "moveSpeed": 70,
+        "detectionRange": 320,
+        "attackRange": 55,
+        "attackCooldown": 0.9,
+        "expValue": 20,
+        "color": "#CCCCAA",
+        "size": 42,
+        "shape": "diamond"
+    },
+    "ghost": {
+        "name": "幽灵",
+        "maxHp": 25,
+        "attack": 14,
+        "defense": 0,
+        "moveSpeed": 90,
+        "detectionRange": 400,
+        "attackRange": 40,
+        "attackCooldown": 0.7,
+        "expValue": 25,
+        "color": "#88BBFF",
+        "size": 38,
+        "shape": "circle"
+    },
+    "boss_skeleton": {
+        "name": "骷髅王",
+        "maxHp": 300,
+        "attack": 18,
+        "defense": 5,
+        "moveSpeed": 50,
+        "detectionRange": 450,
+        "attackRange": 110,
+        "attackCooldown": 1.2,
+        "expValue": 200,
+        "color": "#FF8800",
+        "size": 90,
+        "shape": "diamond"
     }
 }
