@@ -30,10 +30,14 @@ export class CombatSystem {
      * @returns {{damage: number, isCrit: boolean}|null}
      */
     dealDamage(attacker, target, baseDamage, skillMultiplier = 1) {
+        if (!target || typeof target.getComponent !== 'function') return null;
         const targetHealth = target.getComponent(HealthComponent);
         if (!targetHealth || targetHealth.isDead) return null;
 
-        const attackerCombat = attacker.getComponent(CombatComponent);
+        const attackerCombat =
+            attacker && typeof attacker.getComponent === 'function'
+                ? attacker.getComponent(CombatComponent)
+                : null;
 
         // 1. 基础伤害 × 技能倍率
         let dmg = baseDamage * skillMultiplier;

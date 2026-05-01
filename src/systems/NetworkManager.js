@@ -88,7 +88,7 @@ export class NetworkManager {
      * @returns {boolean}
      */
     get isOnline() {
-        return this.mode === 'online' && this.isConnected;
+        return this.mode === 'online' && this.isConnected && !!this.room;
     }
 
     // ============================================================
@@ -126,7 +126,6 @@ export class NetworkManager {
         }
 
         // 3. 生产环境回退（meta 标签未配置时的默认值）
-        console.warn('[NetworkManager] No game-server meta tag found, multiplayer may not work');
         return `wss://${host}:2567`;
     }
 
@@ -143,6 +142,9 @@ export class NetworkManager {
         }
 
         this.serverUrl = serverUrl || this._resolveServerUrl();
+        if (!serverUrl && !document.querySelector('meta[name="game-server"]')) {
+            console.warn('[NetworkManager] No game-server meta tag found, using fallback URL');
+        }
 
         // 5秒超时保护
         const connectPromise = new Promise((resolve, reject) => {
@@ -295,7 +297,8 @@ export class NetworkManager {
             const rooms = await this._client.getAvailableRooms(roomName);
             return rooms;
         } catch (error) {
-            console.error('[NetworkManager] Get rooms failed:', error);
+            this.setOfflineMode();
+            console.warn('[NetworkManager] Get rooms failed, switched to offline mode:', error?.message || error);
             return [];
         }
     }

@@ -1,66 +1,69 @@
 @echo off
-REM ================================================================
-REM  HTML 试验方案启动脚本
-REM  使用 Python 内置 HTTP 服务器运行游戏
-REM  用法：双击此文件，然后浏览器访问 http://localhost:8080
-REM ================================================================
+setlocal
+
+REM Keep script robust across devices/code pages: ASCII only.
+cd /d "%~dp0"
 
 echo ===================================
-echo  俯视角自动射击生存游戏 - 启动中
+echo Survivor Game - Starting local server
 echo ===================================
 echo.
 
-REM 尝试用 py -3 (Python Launcher)
+set "PORT=8080"
+set "URL=http://localhost:%PORT%/"
+
 where py >nul 2>&1
-if %ERRORLEVEL% EQU 0 (
-    echo [INFO] 使用 Python 3 HTTP 服务器...
-    echo [INFO] 浏览器访问: http://localhost:8080
-    echo [INFO] 按 Ctrl+C 停止服务器
-    echo.
-    start http://localhost:8080
-    py -3 -m http.server 8080
-    goto :end
-)
+if %ERRORLEVEL% EQU 0 goto :run_py
 
-REM 尝试用 python3
 where python3 >nul 2>&1
-if %ERRORLEVEL% EQU 0 (
-    echo [INFO] 使用 Python 3 HTTP 服务器...
-    echo [INFO] 浏览器访问: http://localhost:8080
-    echo [INFO] 按 Ctrl+C 停止服务器
-    echo.
-    start http://localhost:8080
-    python3 -m http.server 8080
-    goto :end
-)
+if %ERRORLEVEL% EQU 0 goto :run_python3
 
-REM 尝试用 python (可能是 Python 3)
 where python >nul 2>&1
-if %ERRORLEVEL% EQU 0 (
-    echo [INFO] 使用 Python HTTP 服务器...
-    echo [INFO] 浏览器访问: http://localhost:8080
-    echo [INFO] 按 Ctrl+C 停止服务器
-    echo.
-    start http://localhost:8080
-    python -m http.server 8080
-    goto :end
-)
+if %ERRORLEVEL% EQU 0 goto :run_python
 
-REM 尝试用 npx serve
 where npx >nul 2>&1
-if %ERRORLEVEL% EQU 0 (
-    echo [INFO] 使用 npx serve...
-    echo [INFO] 浏览器访问: http://localhost:3000
-    echo [INFO] 按 Ctrl+C 停止服务器
-    echo.
-    npx serve -l 3000
-    goto :end
-)
+if %ERRORLEVEL% EQU 0 goto :run_npx
 
-echo [ERROR] 未找到 Python 或 Node.js，请安装其中之一：
+echo [ERROR] Python or Node.js not found.
+echo Install one of them:
 echo   - Python: https://www.python.org/downloads/
 echo   - Node.js: https://nodejs.org/
 echo.
 pause
+exit /b 1
+
+:run_py
+echo [INFO] Using py -3 HTTP server on port %PORT%
+echo [INFO] Open: %URL%
+start "" "%URL%"
+py -3 -m http.server %PORT%
+goto :end
+
+:run_python3
+echo [INFO] Using python3 HTTP server on port %PORT%
+echo [INFO] Open: %URL%
+start "" "%URL%"
+python3 -m http.server %PORT%
+goto :end
+
+:run_python
+echo [INFO] Using python HTTP server on port %PORT%
+echo [INFO] Open: %URL%
+start "" "%URL%"
+python -m http.server %PORT%
+goto :end
+
+:run_npx
+set "PORT=3000"
+set "URL=http://localhost:%PORT%/"
+echo [INFO] Using npx serve on port %PORT%
+echo [INFO] Open: %URL%
+start "" "%URL%"
+npx serve -l %PORT%
+goto :end
 
 :end
+echo.
+echo Server stopped.
+pause
+endlocal

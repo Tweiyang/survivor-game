@@ -87,8 +87,9 @@ export class ProjectileComponent extends Component {
             if (dist < hitRadius) {
                 // [Network] 联网模式：仅销毁子弹（视觉效果），伤害由服务端权威处理
                 // 离线模式：造成本地伤害
-                if (!isOnline && this.combatSystem && this.owner) {
-                    this.combatSystem.dealDamage(this.owner, enemy, this.damage);
+                if (!isOnline && this.combatSystem) {
+                    const attacker = this.owner || this.entity;
+                    this.combatSystem.dealDamage(attacker, enemy, this.damage);
                 }
                 // 销毁投射物（P1 不穿透）
                 if (this.entityManager) this.entityManager.remove(this.entity);

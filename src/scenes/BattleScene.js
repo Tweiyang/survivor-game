@@ -712,6 +712,20 @@ export class BattleScene extends Scene {
                 this.tilemapData.setTile(gateRect._gridX + dx, gateRect._gridY + dy, 'ground', 0);
             }
         }
+
+        // 兼容修复：部分关卡门口外侧仍可能残留一格墙，导致“已开门但通路被卡”
+        // 清理门矩形四周一圈的墙壁层（仅 wall 层），不改地面层纹理。
+        for (let y = gateRect._gridY - 1; y <= gateRect._gridY + gateRect._gateHeight; y++) {
+            for (let x = gateRect._gridX - 1; x <= gateRect._gridX + gateRect._gateWidth; x++) {
+                const isInsideGate =
+                    x >= gateRect._gridX &&
+                    x < gateRect._gridX + gateRect._gateWidth &&
+                    y >= gateRect._gridY &&
+                    y < gateRect._gridY + gateRect._gateHeight;
+                if (isInsideGate) continue;
+                this.tilemapData.setTile(x, y, 'wall', -1);
+            }
+        }
         console.log('[BattleScene] Boss gate opened!');
     }
 

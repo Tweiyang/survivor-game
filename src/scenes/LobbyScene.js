@@ -536,6 +536,7 @@ export class LobbyScene extends Scene {
 
             case 'backToMain':
                 this._view = VIEW.MAIN;
+                this._stopAutoRefresh();
                 break;
 
             case 'backToSelect':
@@ -552,6 +553,8 @@ export class LobbyScene extends Scene {
     _startSinglePlayer() {
         if (this._battleStarted) return;
         this._battleStarted = true;
+        this._stopAutoRefresh();
+        this._view = VIEW.MAIN;
 
         const netMgr = NetworkManager.getInstance();
         netMgr.setOfflineMode();
@@ -603,6 +606,9 @@ export class LobbyScene extends Scene {
             await netMgr.setOnlineMode();
 
             this._rooms = await netMgr.getAvailableRooms('battle');
+            if (netMgr.mode === 'offline') {
+                throw new Error('Server unavailable');
+            }
             this._view = VIEW.ROOM_LIST;
             this._connecting = false;
 
@@ -636,15 +642,22 @@ export class LobbyScene extends Scene {
 
     /** 刷新房间列表 */
     async _refreshRoomList() {
-        const netMgr = NetworkManager.getInstance();
-        this._rooms = await netMgr.getAvailableRooms('battle');
+        try {
+            const netMgr = NetworkManager.getInstance();
+            this._rooms = await netMgr.getAvailableRooms('battle');
+        } catch (err) {
+            NetworkManager.getInstance().setOfflineMode();
+            this._stopAutoRefresh();
+            this._error = '⚠ 服务器不可用，请稍后重试或选择单人游戏';
+            this._autoClearError();
+        }
     }
 
     /** 自动刷新 */
     _startAutoRefresh() {
         this._stopAutoRefresh();
         this._refreshTimer = setInterval(() => {
-            if (this._view === VIEW.ROOM_LIST) {
+            if (this._view === VIEW.ROOM_LIST && NetworkManager.getInstance().mode === 'online') {
                 this._refreshRoomList();
             }
         }, 3000);
@@ -675,6 +688,7 @@ export class LobbyScene extends Scene {
 
     /** 离开房间 */
     async _leaveRoom() {
+        this._stopAutoRefresh();
         const netMgr = NetworkManager.getInstance();
         await netMgr.disconnect();
         this._view = VIEW.MAIN;
@@ -685,6 +699,7 @@ export class LobbyScene extends Scene {
 
     /** 返回选角 */
     _goBackToSelect() {
+        this._stopAutoRefresh();
         const netMgr = NetworkManager.getInstance();
         if (netMgr.room) {
             netMgr.disconnect();
@@ -868,11 +883,9 @@ export class LobbyScene extends Scene {
 
     destroy() {
         const canvas = this.systems.canvas;
-        if (canvas && this._onClick) {
-            if (this._cleanupClick) {
-                this._cleanupClick();
-                this._cleanupClick = null;
-            }
+        if (canvas && this._cleanupClick) {
+            this._cleanupClick();
+            this._cleanupClick = null;
         }
         this._onClick = null;
         this._stopAutoRefresh();
