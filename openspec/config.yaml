@@ -1,0 +1,23 @@
+schema: spec-driven
+
+# Project context
+context: |
+  俯视角自动射击生存游戏（吸血鬼幸存者式）
+  Tech stack: JavaScript (ES Modules) + Canvas 2D，目标平台 Unity + C#
+  架构: 模拟 Unity GameObject + Component 模式
+  美术: 简笔画像素风瓦片
+  详细规范请参阅项目根目录 rules.md
+
+# Per-artifact rules
+rules:
+  proposal:
+    - 所有设计必须遵循 rules.md 中的双轨开发策略（JS→Unity）
+    - 必须标注该 change 属于哪个 Phase（P0-P4）
+  design:
+    - 每个模块必须标注对应的 Unity 概念映射
+    - 数据结构设计必须考虑 JSON 配置化
+  tasks:
+    - 每个任务应在 2 小时内可完成
+    - 任务描述必须包含验证标准（怎样算完成）
+  specs:
+    - 接口定义必须附带 Unity C# 等价注释

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <!-- 部署时将 YOUR_SERVER 替换为实际 Render 地址（如 wss://survivor-game-server.onrender.com） -->
+    <meta name="game-server" content="wss://YOUR_SERVER.onrender.com">
+    <link rel="icon" href="data:,">
+    <title>俯视角自动射击生存游戏</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #111;
+        }
+        #gameCanvas {
+            display: block;
+            margin: 0 auto;
+            background: #000;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+            touch-action: none;     /* 禁止浏览器默认触摸手势 */
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas"></canvas>
+    <!-- Colyseus JS SDK (Phase 5: Multiplayer) -->
+    <script src="https://unpkg.com/colyseus.js@0.15.25/dist/colyseus.js"></script>
+    <script type="module" src="src/main.js?v=3"></script>
+</body>
+</html>
